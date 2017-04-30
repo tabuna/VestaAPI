@@ -1,10 +1,11 @@
-<?php namespace VestaAPI\Services;
+<?php
+
+namespace VestaAPI\Services;
 
 trait Web
 {
-
     /**
-     * List Web Domains
+     * List Web Domains.
      *
      * @param $domain
      *
@@ -17,15 +18,15 @@ trait Web
 
         $data = json_decode($answer, true);
 
-        $ftpU = strpos($data[$domain]['FTP_USER'], ":");
-        $ftpPath = strpos($data[$domain]['FTP_PATH'], ":");
+        $ftpU = strpos($data[$domain]['FTP_USER'], ':');
+        $ftpPath = strpos($data[$domain]['FTP_PATH'], ':');
 
         if ($ftpU !== false) {
-            $ftAr = explode(":", $data[$domain]['FTP_USER']);
+            $ftAr = explode(':', $data[$domain]['FTP_USER']);
             $data[$domain]['FTP_USER'] = $ftAr;
         }
         if ($ftpPath !== false) {
-            $ftpP = explode(":", $data[$domain]['FTP_PATH']);
+            $ftpP = explode(':', $data[$domain]['FTP_PATH']);
             $data[$domain]['FTP_PATH'] = $ftpP;
         }
 
@@ -33,7 +34,7 @@ trait Web
     }
 
     /**
-     * List Web Domains
+     * List Web Domains.
      *
      * @return mixed
      */
@@ -47,7 +48,7 @@ trait Web
     }
 
     /**
-     * Add Web Domains
+     * Add Web Domains.
      *
      * @param $domain
      * @param $ip
@@ -60,7 +61,7 @@ trait Web
     }
 
     /**
-     * Support DNS
+     * Support DNS.
      *
      * @param $domain
      * @param $ip
@@ -73,7 +74,7 @@ trait Web
     }
 
     /**
-     * Support Mail
+     * Support Mail.
      *
      * @param $domain
      *
@@ -85,7 +86,7 @@ trait Web
     }
 
     /**
-     * Add domain aliases
+     * Add domain aliases.
      *
      * @param $domain
      * @param $alias
@@ -96,7 +97,7 @@ trait Web
     }
 
     /**
-     * Support Alias DNS
+     * Support Alias DNS.
      *
      * @param $domain
      * @param $alias
@@ -109,7 +110,7 @@ trait Web
     }
 
     /**
-     * Delete www. alias if it wasn't found
+     * Delete www. alias if it wasn't found.
      *
      * @param $domain
      * @param $alias
@@ -122,7 +123,7 @@ trait Web
     }
 
     /**
-     * Add FTP domain
+     * Add FTP domain.
      *
      * @param $domain
      * @param $ftpUserName
@@ -138,7 +139,7 @@ trait Web
     }
 
     /**
-     * Add proxy support
+     * Add proxy support.
      *
      * @param $domain
      * @param $ext
@@ -151,7 +152,7 @@ trait Web
     }
 
     /**
-     * Delete domain
+     * Delete domain.
      *
      * @param $domain
      *
@@ -163,7 +164,7 @@ trait Web
     }
 
     /**
-     * Chane dns domain IP
+     * Chane dns domain IP.
      *
      * @param $domain
      * @param $ip
@@ -176,7 +177,7 @@ trait Web
     }
 
     /**
-     * Delete web domain
+     * Delete web domain.
      *
      * @param $domain
      * @param $ftpUserName
@@ -186,11 +187,10 @@ trait Web
     public function deleteWebDomain($domain, $ftpUserName)
     {
         return $this->send('v-delete-web-domain-ftp', $this->vestaUserName, $domain, $ftpUserName);
-
     }
 
     /**
-     * Change web domain
+     * Change web domain.
      *
      * @param $domain
      * @param $ftpUserName
@@ -205,7 +205,7 @@ trait Web
     }
 
     /**
-     * Change ftp password
+     * Change ftp password.
      *
      * @param $domain
      * @param $ftpUserName
@@ -215,10 +215,7 @@ trait Web
      */
     public function changeFtpPassword($domain, $ftpUserName, $password)
     {
-
         return $this->send('v-change-web-domain-ftp-password', $this->vestaUserName, $domain, $ftpUserName,
             $password);
-
     }
-
 }

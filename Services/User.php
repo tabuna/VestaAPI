@@ -1,10 +1,11 @@
-<?php namespace VestaAPI\Services;
+<?php
+
+namespace VestaAPI\Services;
 
 trait User
 {
-
     /**
-     * Registration User
+     * Registration User.
      *
      * @param $username
      * @param $password
@@ -41,7 +42,7 @@ trait User
     }
 
     /**
-     * List User Account
+     * List User Account.
      *
      * @return mixed
      */
@@ -67,7 +68,7 @@ trait User
     }
 
     /**
-     * List User Backups
+     * List User Backups.
      *
      * @return mixed
      */
@@ -81,7 +82,7 @@ trait User
     }
 
     /**
-     * Delete backup user
+     * Delete backup user.
      *
      * @param $backup
      *
@@ -93,7 +94,7 @@ trait User
     }
 
     /**
-     * Show Backup
+     * Show Backup.
      *
      * @param $backup
      *
@@ -215,6 +216,4 @@ trait User
 
         return $data;
     }
-
-
 }

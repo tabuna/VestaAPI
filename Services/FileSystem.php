@@ -1,8 +1,9 @@
-<?php namespace VestaAPI\Services;
+<?php
+
+namespace VestaAPI\Services;
 
 trait FileSystem
 {
-
     /**
      * @var string
      */
@@ -40,9 +41,9 @@ trait FileSystem
      *
      * @return mixed
      */
-    public function openFile($path = "")
+    public function openFile($path = '')
     {
-        $path = "/home/" . $this->vestaUserName . "/" . $path;
+        $path = '/home/'.$this->vestaUserName.'/'.$path;
         $this->returnCode = 'no';
 
         return $this->send('v-open-fs-file', $this->vestaUserName, $path);
@@ -80,7 +81,7 @@ trait FileSystem
      */
     public function changePermission($srcFile, $permissions)
     {
-        $srcFile = "/home/" . $this->vestaUserName . "/" . $srcFile;
+        $srcFile = '/home/'.$this->vestaUserName.'/'.$srcFile;
         $this->returnCode = 'no';
 
         return $this->send('v-change-fs-file-permission', $this->vestaUserName, $srcFile, $permissions);
@@ -120,7 +121,7 @@ trait FileSystem
     public function deleteDir($dstDir)
     {
         $this->returnCode = 'no';
-        $dstDir = "/home/" . $this->vestaUserName . "/" . $dstDir;
+        $dstDir = '/home/'.$this->vestaUserName.'/'.$dstDir;
 
         return $this->send('v-delete-fs-dir', $this->vestaUserName, $dstDir);
     }
@@ -133,7 +134,7 @@ trait FileSystem
     public function deleteFile($dstFile)
     {
         $this->returnCode = 'no';
-        $dstFile = "/home/" . $this->vestaUserName . "/" . $dstFile;
+        $dstFile = '/home/'.$this->vestaUserName.'/'.$dstFile;
 
         return $this->send('v-delete-fs-file', $this->vestaUserName, $dstFile);
     }
@@ -158,7 +159,7 @@ trait FileSystem
      */
     public function listDirectory($path = '')
     {
-        $path = "/home/" . $this->vestaUserName . "/" . $path;
+        $path = '/home/'.$this->vestaUserName.'/'.$path;
         $this->returnCode = 'no';
         $responseVesta = $this->send('v-list-fs-directory', $this->vestaUserName, $path);
 
@@ -195,6 +196,4 @@ trait FileSystem
 
         return $data;
     }
-
-
 }

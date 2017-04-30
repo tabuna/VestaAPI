@@ -1,10 +1,11 @@
-<?php namespace VestaAPI\Services;
+<?php
+
+namespace VestaAPI\Services;
 
 trait Service
 {
-
     /**
-     * Restart dns server
+     * Restart dns server.
      *
      * @return mixed
      */
@@ -120,8 +121,8 @@ trait Service
 
     /**
      * @return mixed
-     * @internal param string $restart
      *
+     * @internal param string $restart
      */
     public function rebuildWebDomains()
     {
@@ -130,8 +131,8 @@ trait Service
 
     /**
      * @return mixed
-     * @internal param string $restart
      *
+     * @internal param string $restart
      */
     public function rebuildDNSDomains()
     {
@@ -156,8 +157,8 @@ trait Service
 
     /**
      * @return mixed
-     * @internal param string $restart
      *
+     * @internal param string $restart
      */
     public function rebuildCronJobs()
     {
@@ -181,6 +182,4 @@ trait Service
     {
         return $this->send('v-update-sys-vesta', $package);
     }
-
-
 }

@@ -1,10 +1,11 @@
-<?php namespace VestaAPI\Services;
+<?php
+
+namespace VestaAPI\Services;
 
 trait DNS
 {
-
     /**
-     * List DNS
+     * List DNS.
      *
      * @return mixed
      */
@@ -18,7 +19,7 @@ trait DNS
     }
 
     /**
-     * List Only DNS
+     * List Only DNS.
      *
      * @param $dns
      *
@@ -34,7 +35,7 @@ trait DNS
     }
 
     /**
-     * Delete DNS record domain
+     * Delete DNS record domain.
      *
      * @param $domain
      *
@@ -46,7 +47,7 @@ trait DNS
     }
 
     /**
-     * Delete DNS record
+     * Delete DNS record.
      *
      * @param $domain
      * @param $recordId
@@ -59,7 +60,7 @@ trait DNS
     }
 
     /**
-     * Add DNS domain
+     * Add DNS domain.
      *
      * @param      $domain
      * @param      $ip
@@ -77,7 +78,7 @@ trait DNS
     }
 
     /**
-     * Set expiriation date
+     * Set expiriation date.
      *
      * @param $domain
      * @param $exp
@@ -86,11 +87,11 @@ trait DNS
      */
     public function changeDNSDomainExp($domain, $exp)
     {
-        return $this->send('v-change-dns-domain-exp', $this->vestaUserName, $domain, $exp, "no");
+        return $this->send('v-change-dns-domain-exp', $this->vestaUserName, $domain, $exp, 'no');
     }
 
     /**
-     * Set TTL
+     * Set TTL.
      *
      * @param $domain
      * @param $ttl
@@ -99,11 +100,11 @@ trait DNS
      */
     public function changeDNSDomainTtl($domain, $ttl)
     {
-        return $this->send('v-change-dns-domain-ttl', $this->vestaUserName, $domain, $ttl, "no");
+        return $this->send('v-change-dns-domain-ttl', $this->vestaUserName, $domain, $ttl, 'no');
     }
 
     /**
-     * List DNS record domain
+     * List DNS record domain.
      *
      * @param $domain
      *
@@ -119,7 +120,7 @@ trait DNS
     }
 
     /**
-     * Change DNS domain record
+     * Change DNS domain record.
      *
      * @param $domain
      * @param $recordId
@@ -135,7 +136,7 @@ trait DNS
     }
 
     /**
-     * Remove DNS record
+     * Remove DNS record.
      *
      * @param $domain
      * @param $recordId
@@ -146,7 +147,7 @@ trait DNS
     }
 
     /**
-     * Add DNS record
+     * Add DNS record.
      *
      * @param $domain
      * @param $rec
@@ -158,5 +159,4 @@ trait DNS
     {
         $this->send('v-add-dns-record', $this->vestaUserName, $domain, $rec, $type, $val, $priority);
     }
-
 }

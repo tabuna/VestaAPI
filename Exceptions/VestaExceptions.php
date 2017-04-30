@@ -1,4 +1,6 @@
-<?php namespace VestaAPI\Exceptions;
+<?php
+
+namespace VestaAPI\Exceptions;
 
 use Exception;
 
@@ -9,7 +11,7 @@ class VestaExceptions extends Exception
      *
      * @return $this
      */
-    static function render(Exception $e)
+    public static function render(Exception $e)
     {
         switch ($e->message) {
             case 1:
@@ -78,5 +80,4 @@ class VestaExceptions extends Exception
 
         return $return;
     }
-
 }
