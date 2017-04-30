@@ -5,7 +5,7 @@
 
 
 <p align="center">
-VestaCP client for Laravel
+Powerful API client hosting VestaCP for Laravel
 </p>
 
 
