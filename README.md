@@ -54,3 +54,12 @@ Publication
 php artisan vendor:publish
 ```
 
+
+## Usage
+
+	
+Simple usage
+```php
+    $backups = Vesta::server('testVDS')->user('MyUserName')->listUserBackups();
+```
+
