@@ -1,2 +1,2 @@
 # VestaAPI
-PHP Client VestaCP
+VestaCP client for Laravel

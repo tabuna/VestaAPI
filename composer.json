@@ -1,0 +1,34 @@
+{
+  "name": "tabuna/vesta-api",
+  "description": "VestaCP client for Laravel",
+  "keywords": [
+    "framework",
+    "laravel",
+    "hosting",
+    "vesta",
+    "panel"
+  ],
+  "type": "library",
+  "require": {
+    "guzzlehttp/guzzle": "^6.2",
+    "laravel/framework": "^5.0"
+  },
+  "license": "GPL3",
+  "support": {
+    "issues": "https://github.com/tabuna/VestaAPI/issues",
+    "source": "https://github.com/tabuna/VestaAPI"
+  },
+  "authors": [
+    {
+      "name": "Alexandr Chernyaev",
+      "email": "bliz48rus@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "VestaAPI\\": "/"
+    }
+  },
+  "minimum-stability": "alpha",
+  "prefer-stable": true
+}
