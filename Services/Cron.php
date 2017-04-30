@@ -1,10 +1,11 @@
-<?php namespace VestaAPI\Services;
+<?php
+
+namespace VestaAPI\Services;
 
 trait Cron
 {
-
     /**
-     * Cron list
+     * Cron list.
      *
      * @return mixed
      */
@@ -18,7 +19,7 @@ trait Cron
     }
 
     /**
-     * Add Cron
+     * Add Cron.
      *
      * @param $min
      * @param $hour
@@ -36,7 +37,7 @@ trait Cron
     }
 
     /**
-     * Show Cron
+     * Show Cron.
      *
      * @param $job
      *
@@ -52,7 +53,7 @@ trait Cron
     }
 
     /**
-     * Delete cron
+     * Delete cron.
      *
      * @param $job
      *
@@ -64,7 +65,7 @@ trait Cron
     }
 
     /**
-     * Edit cron
+     * Edit cron.
      *
      * @param $job
      * @param $min
@@ -81,6 +82,4 @@ trait Cron
         return $this->send('v-change-cron-job', $this->vestaUserName, $job, $min, $hour, $day, $month,
             $wday, $cmd);
     }
-
-
 }

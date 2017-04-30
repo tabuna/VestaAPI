@@ -1,9 +1,11 @@
-<?php namespace VestaAPI\Services;
+<?php
+
+namespace VestaAPI\Services;
 
 use GuzzleHttp\Client;
 use VestaAPI\Exceptions\VestaExceptions;
 
-class VestaAPI
+class Vesta
 {
     use BD, DNS, User, Web, Service, Cron, FileSystem;
 
@@ -13,7 +15,7 @@ class VestaAPI
     public $vestaUserName;
 
     /**
-     * return no|yes|json
+     * return no|yes|json.
      *
      * @var string
      */
@@ -40,7 +42,7 @@ class VestaAPI
         if (is_null($server)) {
             $config = config('vesta.servers')[config('vesta.primary')];
         } else {
-            $config = config('vesta.servers.' . $server);
+            $config = config('vesta.servers.'.$server);
         }
 
         $this->vestaUserName = $vestaUserName;
@@ -55,7 +57,7 @@ class VestaAPI
      */
     public function server($server)
     {
-        $config = config('vesta.servers.' . $server);
+        $config = config('vesta.servers.'.$server);
         $this->key = (string) $config['key'];
         $this->host = (string) $config['host'];
 
@@ -86,8 +88,9 @@ class VestaAPI
      * @param null $arg8
      * @param null $arg9
      *
-     * @return mixed
      * @throws VestaExceptions
+     *
+     * @return mixed
      */
     public function send(
         $cmd,
@@ -117,7 +120,7 @@ class VestaAPI
         ];
 
         $client = new Client([
-            'base_uri'    => 'https://' . $this->host . ':8083/api/',
+            'base_uri'    => 'https://'.$this->host.':8083/api/',
             'timeout'     => 10.0,
             'verify'      => false,
             'form_params' => $postVars,
@@ -133,6 +136,4 @@ class VestaAPI
 
         return $query;
     }
-
-
 }

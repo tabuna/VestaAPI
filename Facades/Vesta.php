@@ -1,4 +1,6 @@
-<?php namespace VestaAPI\Facades;
+<?php
+
+namespace VestaAPI\Facades;
 
 use Illuminate\Support\Facades\Facade;
 use VestaAPI\Services\VestaAPI;
