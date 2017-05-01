@@ -13,7 +13,7 @@
     "guzzlehttp/guzzle": "^6.2",
     "laravel/framework": "^5.0"
   },
-  "license": "GPL3",
+  "license": "GPL-3.0",
   "support": {
     "issues": "https://github.com/tabuna/VestaAPI/issues",
     "source": "https://github.com/tabuna/VestaAPI"
