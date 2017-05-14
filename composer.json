@@ -29,6 +29,11 @@
       "VestaAPI\\": "/"
     }
   },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  },
   "minimum-stability": "alpha",
   "prefer-stable": true
 }
