@@ -23,7 +23,7 @@ trait Service
     {
         $this->returnCode = 'no';
 
-        return json_decode($this->send('v-search-user-object', $this->vestaUserName, $query, 'json'), true);
+        return json_decode($this->send('v-search-user-object', $this->userName, $query, 'json'), true);
     }
 
     /**
@@ -126,7 +126,7 @@ trait Service
      */
     public function rebuildWebDomains()
     {
-        return $this->send('v-rebuild-web-domains', $this->vestaUserName);
+        return $this->send('v-rebuild-web-domains', $this->userName);
     }
 
     /**
@@ -136,7 +136,7 @@ trait Service
      */
     public function rebuildDNSDomains()
     {
-        return $this->send('v-rebuild-dns-domains', $this->vestaUserName);
+        return $this->send('v-rebuild-dns-domains', $this->userName);
     }
 
     /**
@@ -144,7 +144,7 @@ trait Service
      */
     public function rebuildMailDomains()
     {
-        return $this->send('v-rebuild-mail-domains', $this->vestaUserName);
+        return $this->send('v-rebuild-mail-domains', $this->userName);
     }
 
     /**
@@ -152,7 +152,7 @@ trait Service
      */
     public function rebuildDataBases()
     {
-        return $this->send('v-rebuild-databases', $this->vestaUserName);
+        return $this->send('v-rebuild-databases', $this->userName);
     }
 
     /**
@@ -162,7 +162,7 @@ trait Service
      */
     public function rebuildCronJobs()
     {
-        return $this->send('v-rebuild-cron-jobs', $this->vestaUserName);
+        return $this->send('v-rebuild-cron-jobs', $this->userName);
     }
 
     /**
@@ -170,7 +170,7 @@ trait Service
      */
     public function updateUserCounters()
     {
-        return $this->send('v-update-user-counters', $this->vestaUserName);
+        return $this->send('v-update-user-counters', $this->userName);
     }
 
     /**

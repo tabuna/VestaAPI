@@ -13,7 +13,7 @@ trait BD
     {
         $this->returnCode = 'no';
 
-        return json_decode($this->send('v-list-databases', $this->vestaUserName, 'json'), true);
+        return json_decode($this->send('v-list-databases', $this->userName, 'json'), true);
     }
 
     /**
@@ -26,7 +26,7 @@ trait BD
      */
     public function changeDbUser($database, $dbuser)
     {
-        return $this->send('v-change-database-user', $this->vestaUserName, $database, $dbuser);
+        return $this->send('v-change-database-user', $this->userName, $database, $dbuser);
     }
 
     /**
@@ -39,7 +39,7 @@ trait BD
      */
     public function changeDbPassword($database, $password)
     {
-        return $this->send('v-change-database-password', $this->vestaUserName, $database, $password);
+        return $this->send('v-change-database-password', $this->userName, $database, $password);
     }
 
     /**
@@ -52,7 +52,7 @@ trait BD
     public function listOnlyBD($database)
     {
         $this->returnCode = 'no';
-        $listBd = $this->send('v-list-database', $this->vestaUserName, $database, 'json');
+        $listBd = $this->send('v-list-database', $this->userName, $database, 'json');
         $data = json_decode($listBd, true);
 
         return $data;
@@ -71,7 +71,7 @@ trait BD
      */
     public function addDateBase($database, $dbuser, $password, $type, $charset)
     {
-        return $this->send('v-add-database', $this->vestaUserName, $database, $dbuser, $password, $type,
+        return $this->send('v-add-database', $this->userName, $database, $dbuser, $password, $type,
             'localhost', $charset);
     }
 
@@ -84,6 +84,6 @@ trait BD
      */
     public function deleteDateBase($database)
     {
-        return $this->send('v-delete-database', $this->vestaUserName, $database);
+        return $this->send('v-delete-database', $this->userName, $database);
     }
 }

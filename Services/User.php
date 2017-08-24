@@ -28,7 +28,7 @@ trait User
      */
     public function changeUserPassword($password)
     {
-        return $this->send('v-change-user-password', $this->vestaUserName, $password);
+        return $this->send('v-change-user-password', $this->userName, $password);
     }
 
     /**
@@ -38,7 +38,7 @@ trait User
      */
     public function changeUserEmail($email)
     {
-        return $this->send('v-change-user-contact', $this->vestaUserName, $email);
+        return $this->send('v-change-user-contact', $this->userName, $email);
     }
 
     /**
@@ -49,7 +49,7 @@ trait User
     public function listUserAccount()
     {
         $this->returnCode = 'no';
-        $answer = $this->send('v-list-user', $this->vestaUserName, 'json');
+        $answer = $this->send('v-list-user', $this->userName, 'json');
         $data = json_decode($answer, true);
 
         return $data;
@@ -61,7 +61,7 @@ trait User
     public function listUserLog()
     {
         $this->returnCode = 'no';
-        $answer = $this->send('v-list-user-log', $this->vestaUserName, 'json');
+        $answer = $this->send('v-list-user-log', $this->userName, 'json');
         $data = json_decode($answer, true);
 
         return $data;
@@ -75,7 +75,7 @@ trait User
     public function listUserBackups()
     {
         $this->returnCode = 'no';
-        $answer = $this->send('v-list-user-backups', $this->vestaUserName, 'json');
+        $answer = $this->send('v-list-user-backups', $this->userName, 'json');
         $data = json_decode($answer, true);
 
         return $data;
@@ -90,7 +90,7 @@ trait User
      */
     public function deleteUserBackup($backup)
     {
-        return $this->send('v-delete-user-backup', $this->vestaUserName, $backup);
+        return $this->send('v-delete-user-backup', $this->userName, $backup);
     }
 
     /**
@@ -103,7 +103,7 @@ trait User
     public function showUserBackup($backup)
     {
         $this->returnCode = 'no';
-        $answer = $this->send('v-list-user-backup', $this->vestaUserName, $backup, 'json');
+        $answer = $this->send('v-list-user-backup', $this->userName, $backup, 'json');
         $data = json_decode($answer, true);
 
         return $data;
@@ -125,7 +125,7 @@ trait User
         $udir = 'no';
         extract($arg, EXTR_OVERWRITE);
 
-        return $this->send('v-schedule-user-restore', $this->vestaUserName, $backup, $web, $dns, $mail, $db,
+        return $this->send('v-schedule-user-restore', $this->userName, $backup, $web, $dns, $mail, $db,
             $cron, $udir);
     }
 
@@ -134,7 +134,7 @@ trait User
      */
     public function suspendUser()
     {
-        return $this->send('v-suspend-user', $this->vestaUserName, 'no');
+        return $this->send('v-suspend-user', $this->userName, 'no');
     }
 
     /**
@@ -144,7 +144,7 @@ trait User
      */
     public function changePackage($package)
     {
-        return $this->send('v-suspend-user', $this->vestaUserName, $package);
+        return $this->send('v-suspend-user', $this->userName, $package);
     }
 
     /**
@@ -168,7 +168,7 @@ trait User
     {
         $this->returnCode = 'no';
 
-        return $this->send('v-get-user-value', $this->vestaUserName, $option);
+        return $this->send('v-get-user-value', $this->userName, $option);
     }
 
     /**
@@ -178,7 +178,7 @@ trait User
      */
     public function changeShell($ssh = 'nologin')
     {
-        return $this->send('v-change-user-shell', $this->vestaUserName, $ssh);
+        return $this->send('v-change-user-shell', $this->userName, $ssh);
     }
 
     /**
@@ -187,7 +187,7 @@ trait User
     public function adminListUserAccount()
     {
         $this->returnCode = 'no';
-        $answer = $this->send('v-list-user', $this->vestaUserName, 'json');
+        $answer = $this->send('v-list-user', $this->userName, 'json');
         $data = json_decode($answer, true);
 
         return $data;

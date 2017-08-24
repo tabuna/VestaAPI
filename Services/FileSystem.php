@@ -33,7 +33,7 @@ trait FileSystem
     {
         $this->returnCode = 'no';
 
-        return $this->send('v-move-fs-file', $this->vestaUserName, $src, $dst);
+        return $this->send('v-move-fs-file', $this->userName, $src, $dst);
     }
 
     /**
@@ -43,10 +43,10 @@ trait FileSystem
      */
     public function openFile($path = '')
     {
-        $path = '/home/'.$this->vestaUserName.'/'.$path;
+        $path = '/home/'.$this->userName.'/'.$path;
         $this->returnCode = 'no';
 
-        return $this->send('v-open-fs-file', $this->vestaUserName, $path);
+        return $this->send('v-open-fs-file', $this->userName, $path);
     }
 
     /**
@@ -58,7 +58,7 @@ trait FileSystem
     {
         $this->returnCode = 'no';
 
-        return $this->send('v-add-fs-directory', $this->vestaUserName, $patch);
+        return $this->send('v-add-fs-directory', $this->userName, $patch);
     }
 
     /**
@@ -70,7 +70,7 @@ trait FileSystem
     {
         $this->returnCode = 'no';
 
-        return $this->send('v-add-fs-file', $this->vestaUserName, $patch);
+        return $this->send('v-add-fs-file', $this->userName, $patch);
     }
 
     /**
@@ -81,10 +81,10 @@ trait FileSystem
      */
     public function changePermission($srcFile, $permissions)
     {
-        $srcFile = '/home/'.$this->vestaUserName.'/'.$srcFile;
+        $srcFile = '/home/'.$this->userName.'/'.$srcFile;
         $this->returnCode = 'no';
 
-        return $this->send('v-change-fs-file-permission', $this->vestaUserName, $srcFile, $permissions);
+        return $this->send('v-change-fs-file-permission', $this->userName, $srcFile, $permissions);
     }
 
     /**
@@ -97,7 +97,7 @@ trait FileSystem
     {
         $this->returnCode = 'no';
 
-        return $this->send('v-copy-fs-directory', $this->vestaUserName, $srcDir, $dstDir);
+        return $this->send('v-copy-fs-directory', $this->userName, $srcDir, $dstDir);
     }
 
     /**
@@ -110,7 +110,7 @@ trait FileSystem
     {
         $this->returnCode = 'no';
 
-        return $this->send('v-copy-fs-file', $this->vestaUserName, $srcDir, $dstDir);
+        return $this->send('v-copy-fs-file', $this->userName, $srcDir, $dstDir);
     }
 
     /**
@@ -121,9 +121,9 @@ trait FileSystem
     public function deleteDir($dstDir)
     {
         $this->returnCode = 'no';
-        $dstDir = '/home/'.$this->vestaUserName.'/'.$dstDir;
+        $dstDir = '/home/'.$this->userName.'/'.$dstDir;
 
-        return $this->send('v-delete-fs-dir', $this->vestaUserName, $dstDir);
+        return $this->send('v-delete-fs-dir', $this->userName, $dstDir);
     }
 
     /**
@@ -134,9 +134,9 @@ trait FileSystem
     public function deleteFile($dstFile)
     {
         $this->returnCode = 'no';
-        $dstFile = '/home/'.$this->vestaUserName.'/'.$dstFile;
+        $dstFile = '/home/'.$this->userName.'/'.$dstFile;
 
-        return $this->send('v-delete-fs-file', $this->vestaUserName, $dstFile);
+        return $this->send('v-delete-fs-file', $this->userName, $dstFile);
     }
 
     /**
@@ -149,7 +149,7 @@ trait FileSystem
     {
         $this->returnCode = 'no';
 
-        return $this->send('v-extract-fs-archive', $this->vestaUserName, $srcFile, $dstDir);
+        return $this->send('v-extract-fs-archive', $this->userName, $srcFile, $dstDir);
     }
 
     /**
@@ -159,9 +159,9 @@ trait FileSystem
      */
     public function listDirectory($path = '')
     {
-        $path = '/home/'.$this->vestaUserName.'/'.$path;
+        $path = '/home/'.$this->userName.'/'.$path;
         $this->returnCode = 'no';
-        $responseVesta = $this->send('v-list-fs-directory', $this->vestaUserName, $path);
+        $responseVesta = $this->send('v-list-fs-directory', $this->userName, $path);
 
         return $this->parseListing($responseVesta);
     }
