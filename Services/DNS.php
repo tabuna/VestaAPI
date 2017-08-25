@@ -12,7 +12,7 @@ trait DNS
     public function listDNS()
     {
         $this->returnCode = 'no';
-        $listDns = $this->send('v-list-dns-domains', $this->vestaUserName, 'json');
+        $listDns = $this->send('v-list-dns-domains', $this->userName, 'json');
         $data = json_decode($listDns, true);
 
         return $data;
@@ -28,7 +28,7 @@ trait DNS
     public function listOnlyDNS($dns)
     {
         $this->returnCode = 'no';
-        $listDNS = $this->send('v-list-dns-domain', $this->vestaUserName, $dns, 'json');
+        $listDNS = $this->send('v-list-dns-domain', $this->userName, $dns, 'json');
         $data = json_decode($listDNS, true);
 
         return $data;
@@ -43,7 +43,7 @@ trait DNS
      */
     public function deleteDNDDomain($domain)
     {
-        return $this->send('v-delete-dns-domain', $this->vestaUserName, $domain);
+        return $this->send('v-delete-dns-domain', $this->userName, $domain);
     }
 
     /**
@@ -56,7 +56,7 @@ trait DNS
      */
     public function deleteDNSRecord($domain, $recordId)
     {
-        return $this->send('v-delete-dns-record', $this->vestaUserName, $domain, $recordId);
+        return $this->send('v-delete-dns-record', $this->userName, $domain, $recordId);
     }
 
     /**
@@ -73,7 +73,7 @@ trait DNS
      */
     public function addDNSDomain($domain, $ip, $ns1, $ns2, $ns3 = null, $ns4 = null)
     {
-        return $this->send('v-add-dns-domain', $this->vestaUserName, $domain, $ip, $ns1, $ns2, $ns3,
+        return $this->send('v-add-dns-domain', $this->userName, $domain, $ip, $ns1, $ns2, $ns3,
             $ns4, 'no');
     }
 
@@ -87,7 +87,7 @@ trait DNS
      */
     public function changeDNSDomainExp($domain, $exp)
     {
-        return $this->send('v-change-dns-domain-exp', $this->vestaUserName, $domain, $exp, 'no');
+        return $this->send('v-change-dns-domain-exp', $this->userName, $domain, $exp, 'no');
     }
 
     /**
@@ -100,7 +100,7 @@ trait DNS
      */
     public function changeDNSDomainTtl($domain, $ttl)
     {
-        return $this->send('v-change-dns-domain-ttl', $this->vestaUserName, $domain, $ttl, 'no');
+        return $this->send('v-change-dns-domain-ttl', $this->userName, $domain, $ttl, 'no');
     }
 
     /**
@@ -113,7 +113,7 @@ trait DNS
     public function listDNSRecords($domain)
     {
         $this->returnCode = 'no';
-        $data = $this->send('v-list-dns-records', $this->vestaUserName, $domain, 'json');
+        $data = $this->send('v-list-dns-records', $this->userName, $domain, 'json');
         $data = json_decode($data, true);
 
         return $data;
@@ -131,7 +131,7 @@ trait DNS
      */
     public function changeDNSDomainRecord($domain, $recordId, $val, $priority)
     {
-        return $this->send('v-change-dns-record', $this->vestaUserName, $domain, $recordId, $val,
+        return $this->send('v-change-dns-record', $this->userName, $domain, $recordId, $val,
             $priority);
     }
 
@@ -143,7 +143,7 @@ trait DNS
      */
     public function removeDNSRecord($domain, $recordId)
     {
-        $this->send('v-delete-dns-record', $this->vestaUserName, $domain, $recordId);
+        $this->send('v-delete-dns-record', $this->userName, $domain, $recordId);
     }
 
     /**
@@ -157,6 +157,6 @@ trait DNS
      */
     public function addDNSRecord($domain, $rec, $type, $val, $priority)
     {
-        $this->send('v-add-dns-record', $this->vestaUserName, $domain, $rec, $type, $val, $priority);
+        $this->send('v-add-dns-record', $this->userName, $domain, $rec, $type, $val, $priority);
     }
 }
