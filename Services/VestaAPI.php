@@ -46,7 +46,7 @@ class VestaAPI
         if (!isset($allServers[$server])) {
             throw new \Exception('Specified server not found in config');
         }
-        if ($this->keysChack($server, $allServers)) {
+        if ($this->keysCheck($server, $allServers)) {
             throw new \Exception('Specified server config does not contain host or key');
         }
         $this->key = (string) $allServers[$server]['key'];
@@ -115,7 +115,7 @@ class VestaAPI
      *
      * @return bool
      */
-    private function keysChack($server, $config)
+    private function keysCheck($server, $config)
     {
         return !isset($config[$server]['key']) || !isset($config[$server]['host']);
     }
