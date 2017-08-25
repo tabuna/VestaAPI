@@ -24,7 +24,7 @@ class VestaAPI
     /**
      * @var string
      */
-    private $key  = '';
+    private $key = '';
 
     /**
      * @var
@@ -34,8 +34,9 @@ class VestaAPI
     /**
      * @param string $server
      *
-     * @return $this
      * @throws \Exception
+     *
+     * @return $this
      */
     public function server($server = '')
     {
@@ -58,8 +59,9 @@ class VestaAPI
     /**
      * @param string $userName
      *
-     * @return $this
      * @throws \Exception
+     *
+     * @return $this
      */
     public function setUserName($userName = '')
     {
@@ -67,16 +69,19 @@ class VestaAPI
             throw new \Exception('Server is not specified');
         }
         $this->userName = $userName;
+
         return $this;
     }
 
     /**
      * @param string $cmd
      *
-     * @return string
      * @throws VestaExceptions
+     *
+     * @return string
      */
-    public function send($cmd) {
+    public function send($cmd)
+    {
         $postVars = [
             'user'       => $this->userName,
             'password'   => $this->key,
@@ -88,7 +93,7 @@ class VestaAPI
             if ($num === 0) {
                 continue;
             }
-            $postVars['arg' . $num] = $args[$num];
+            $postVars['arg'.$num] = $args[$num];
         }
 
         $client = new Client([
@@ -111,7 +116,7 @@ class VestaAPI
 
     /**
      * @param string $server
-     * @param array $config
+     * @param array  $config
      *
      * @return bool
      */
