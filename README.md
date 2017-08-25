@@ -69,15 +69,3 @@ Simple usage
 ```php
 $backups = Vesta::server('testVDS')->user('MyUserName')->listUserBackups();
 
-//or class
-$vesta = new Vesta('testVDS','MyUserName');
-$vesta->addCron(
-    $request->v_min,
-    $request->v_hour,
-    $request->v_day,
-    $request->v_month,
-    $request->v_wday,
-    $request->v_cmd
-);
-```
-
