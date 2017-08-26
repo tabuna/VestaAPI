@@ -1,6 +1,6 @@
 <?php
 
-namespace VestaAPI\Providers;
+namespace Tabuna\VestaAPI\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -20,11 +20,11 @@ class VestaServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            __DIR__.'/../config/vesta.php' => config_path('vesta.php'),
+            __DIR__ . '/../../config/vesta.php' => config_path('vesta.php'),
         ]);
 
         $this->mergeConfigFrom(
-            __DIR__.'/../config/vesta.php', 'vesta'
+            __DIR__ . '/../../config/vesta.php', 'vesta'
         );
     }
 }

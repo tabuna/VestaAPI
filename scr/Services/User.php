@@ -1,6 +1,6 @@
 <?php
 
-namespace VestaAPI\Services;
+namespace Tabuna\VestaAPI\Services;
 
 trait User
 {

@@ -38,7 +38,7 @@ Service provider to the 'providers' array:
     //...
     
     // Package Service Providers
-    VestaAPI\Providers\VestaServiceProvider::class
+    Tabuna\VestaAPI\Providers\VestaServiceProvider::class
     
     // ...
     
@@ -52,7 +52,7 @@ Facades aliases to the 'aliases' array:
 'aliases' => [
     // ...
     
-    'Vesta' => VestaAPI\Facades\Vesta::class,
+    'Vesta' => Tabuna\VestaAPI\Facades\Vesta::class,
 ];
 ```
 

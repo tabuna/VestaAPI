@@ -26,12 +26,17 @@
   ],
   "autoload": {
     "psr-4": {
-      "VestaAPI\\": "/"
+      "VestaAPI\\": "src/"
     }
   },
   "extra": {
-    "branch-alias": {
-      "dev-master": "1.0-dev"
+    "laravel": {
+      "providers": [
+        "Tabuna\\VestaAPI\\Providers\\VestaServiceProvider"
+      ],
+      "aliases": {
+        "Dashboard": "Tabuna\\VestaAPI\\Facades\\Vesta"
+      }
     }
   },
   "minimum-stability": "alpha",

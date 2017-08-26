@@ -1,9 +1,9 @@
 <?php
 
-namespace VestaAPI\Services;
+namespace Tabuna\VestaAPI\Services;
 
 use GuzzleHttp\Client;
-use VestaAPI\Exceptions\VestaExceptions;
+use Tabuna\VestaAPI\Exceptions\VestaExceptions;
 
 class VestaAPI
 {
@@ -57,6 +57,17 @@ class VestaAPI
     }
 
     /**
+     * @param string $server
+     * @param array  $config
+     *
+     * @return bool
+     */
+    private function keysCheck($server, $config)
+    {
+        return !isset($config[$server]['key']) || !isset($config[$server]['host']);
+    }
+
+    /**
      * @param string $userName
      *
      * @throws \Exception
@@ -93,11 +104,11 @@ class VestaAPI
             if ($num === 0) {
                 continue;
             }
-            $postVars['arg'.$num] = $args[$num];
+            $postVars['arg' . $num] = $args[$num];
         }
 
         $client = new Client([
-            'base_uri'    => 'https://'.$this->host.':8083/api/',
+            'base_uri'    => 'https://' . $this->host . ':8083/api/',
             'timeout'     => 10.0,
             'verify'      => false,
             'form_params' => $postVars,
@@ -112,16 +123,5 @@ class VestaAPI
         }
 
         return $query;
-    }
-
-    /**
-     * @param string $server
-     * @param array  $config
-     *
-     * @return bool
-     */
-    private function keysCheck($server, $config)
-    {
-        return !isset($config[$server]['key']) || !isset($config[$server]['host']);
     }
 }

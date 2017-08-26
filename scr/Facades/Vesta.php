@@ -1,9 +1,9 @@
 <?php
 
-namespace VestaAPI\Facades;
+namespace Tabuna\VestaAPI\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use VestaAPI\Services\VestaAPI;
+use Tabuna\VestaAPI\Services\VestaAPI;
 
 class Vesta extends Facade
 {
