@@ -62,6 +62,13 @@ php artisan vendor:publish
 ```
 
 
+Generate api key
+
+```bash
+bash /usr/local/vesta/bin/v-generate-api-key
+```
+
+
 ## Usage
 
 	
