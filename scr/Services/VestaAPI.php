@@ -104,11 +104,11 @@ class VestaAPI
             if ($num === 0) {
                 continue;
             }
-            $postVars['arg' . $num] = $args[$num];
+            $postVars['arg'.$num] = $args[$num];
         }
 
         $client = new Client([
-            'base_uri'    => 'https://' . $this->host . ':8083/api/',
+            'base_uri'    => 'https://'.$this->host.':8083/api/',
             'timeout'     => 10.0,
             'verify'      => false,
             'form_params' => $postVars,
