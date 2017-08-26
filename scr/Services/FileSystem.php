@@ -43,7 +43,7 @@ trait FileSystem
      */
     public function openFile($path = '')
     {
-        $path = '/home/' . $this->userName . '/' . $path;
+        $path = '/home/'.$this->userName.'/'.$path;
         $this->returnCode = 'no';
 
         return $this->send('v-open-fs-file', $this->userName, $path);
@@ -81,7 +81,7 @@ trait FileSystem
      */
     public function changePermission($srcFile, $permissions)
     {
-        $srcFile = '/home/' . $this->userName . '/' . $srcFile;
+        $srcFile = '/home/'.$this->userName.'/'.$srcFile;
         $this->returnCode = 'no';
 
         return $this->send('v-change-fs-file-permission', $this->userName, $srcFile, $permissions);
@@ -121,7 +121,7 @@ trait FileSystem
     public function deleteDir($dstDir)
     {
         $this->returnCode = 'no';
-        $dstDir = '/home/' . $this->userName . '/' . $dstDir;
+        $dstDir = '/home/'.$this->userName.'/'.$dstDir;
 
         return $this->send('v-delete-fs-dir', $this->userName, $dstDir);
     }
@@ -134,7 +134,7 @@ trait FileSystem
     public function deleteFile($dstFile)
     {
         $this->returnCode = 'no';
-        $dstFile = '/home/' . $this->userName . '/' . $dstFile;
+        $dstFile = '/home/'.$this->userName.'/'.$dstFile;
 
         return $this->send('v-delete-fs-file', $this->userName, $dstFile);
     }
@@ -159,7 +159,7 @@ trait FileSystem
      */
     public function listDirectory($path = '')
     {
-        $path = '/home/' . $this->userName . '/' . $path;
+        $path = '/home/'.$this->userName.'/'.$path;
         $this->returnCode = 'no';
         $responseVesta = $this->send('v-list-fs-directory', $this->userName, $path);
 
