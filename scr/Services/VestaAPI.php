@@ -1,6 +1,6 @@
 <?php
 
-namespace Tabuna\Vesta\Services;
+namespace VestaAPI\Services;
 
 use GuzzleHttp\Client;
 use Tabuna\Vesta\Exceptions\VestaExceptions;

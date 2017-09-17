@@ -1,6 +1,6 @@
 <?php
 
-namespace Tabuna\Vesta\Facades;
+namespace VestaAPI\Facades;
 
 use Illuminate\Support\Facades\Facade;
 use Tabuna\Vesta\Services\VestaAPI;
