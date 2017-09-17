@@ -45,5 +45,7 @@ bash /usr/local/vesta/bin/v-generate-api-key
 	
 Simple usage
 ```php
+use VestaAPI\Facades\Vesta;
+
 $backups = Vesta::server('testVDS')->user('MyUserName')->listUserBackups();
 
