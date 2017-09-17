@@ -26,19 +26,19 @@
   ],
   "autoload": {
     "psr-4": {
-      "VestaAPI\\": "src/"
+      "Tabuna\\": "src/Vesta"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "Tabuna\\VestaAPI\\Providers\\VestaServiceProvider"
+        "Tabuna\\Vesta\\Providers\\VestaServiceProvider"
       ],
       "aliases": {
-        "Dashboard": "Tabuna\\VestaAPI\\Facades\\Vesta"
+        "Dashboard": "Tabuna\\Vesta\\Facades\\Vesta"
       }
     }
   },
-  "minimum-stability": "alpha",
+  "minimum-stability": "stable",
   "prefer-stable": true
 }

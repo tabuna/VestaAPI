@@ -1,9 +1,9 @@
 <?php
 
-namespace Tabuna\VestaAPI\Services;
+namespace Tabuna\Vesta\Services;
 
 use GuzzleHttp\Client;
-use Tabuna\VestaAPI\Exceptions\VestaExceptions;
+use Tabuna\Vesta\Exceptions\VestaExceptions;
 
 class VestaAPI
 {
@@ -44,12 +44,15 @@ class VestaAPI
             throw new \Exception('Server is not specified');
         }
         $allServers = config('vesta.servers');
+
         if (!isset($allServers[$server])) {
             throw new \Exception('Specified server not found in config');
         }
+
         if ($this->keysCheck($server, $allServers)) {
             throw new \Exception('Specified server config does not contain host or key');
         }
+
         $this->key = (string) $allServers[$server]['key'];
         $this->host = (string) $allServers[$server]['host'];
 

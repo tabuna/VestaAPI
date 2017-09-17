@@ -1,6 +1,6 @@
 <?php
 
-namespace Tabuna\VestaAPI\Providers;
+namespace Tabuna\Vesta\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

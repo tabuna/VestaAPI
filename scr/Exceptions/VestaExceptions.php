@@ -1,6 +1,6 @@
 <?php
 
-namespace Tabuna\VestaAPI\Exceptions;
+namespace Tabuna\Vesta\Exceptions;
 
 use Exception;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tabuna\VestaAPI\Services;
+namespace Tabuna\Vesta\Services;
 
 trait Cron
 {
