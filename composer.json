@@ -26,7 +26,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Tabuna\\VestaAPI\\": "src/"
+       "Tabuna\\": "src/VestaAPI"
     }
   },
   "extra": {
@@ -39,6 +39,6 @@
       }
     }
   },
-  "minimum-stability": "alpha",
+  "minimum-stability": "stable",
   "prefer-stable": true
 }
