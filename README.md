@@ -28,39 +28,10 @@ Going your project directory on shell and run this command:
 $ composer require tabuna/vesta-api
 ```
 
-Add to `config/app.php`:
-
-Service provider to the 'providers' array:
-
-```php
-'providers' => [
-    // Laravel Framework Service Providers...
-    //...
-    
-    // Package Service Providers
-    Tabuna\VestaAPI\Providers\VestaServiceProvider::class
-    
-    // ...
-    
-    // Application Service Providers
-    // ...
-];
-```
-
-Facades aliases to the 'aliases' array:
-```php
-'aliases' => [
-    // ...
-    
-    'Vesta' => Tabuna\VestaAPI\Facades\Vesta::class,
-];
-```
-
 Publication
 ```php
-php artisan vendor:publish
+php artisan vendor:publish -all
 ```
-
 
 Generate api key
 
