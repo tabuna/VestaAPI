@@ -38,7 +38,7 @@ Generate api key
 ```bash
 bash /usr/local/vesta/bin/v-generate-api-key
 ```
-Or you can view a existing keys
+Or you can view existing keys
 
 ```sh
 ls -l /usr/local/vesta/data/keys/
