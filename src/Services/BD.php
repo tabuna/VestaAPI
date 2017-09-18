@@ -7,37 +7,41 @@ trait BD
     /**
      * List data base.
      *
+     * @param string $user
+     *
      * @return mixed
      */
-    public function listBD()
+    public function listBD($user)
     {
-        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-databases', $this->getUserName(), 'json'));
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-databases', $user, 'json'));
     }
 
     /**
      * Change user database.
      *
+     * @param string $user
      * @param $database
      * @param $dbUser
      *
      * @return mixed
      */
-    public function changeDbUser($database, $dbUser)
+    public function changeDbUser($user, $database, $dbUser)
     {
-        return $this->toString($this->send('v-change-database-user', $this->getUserName(), $database, $dbUser));
+        return $this->toString($this->send('v-change-database-user', $user, $database, $dbUser));
     }
 
     /**
      * Change data base password.
      *
+     * @param string $user
      * @param $database
      * @param $password
      *
      * @return mixed
      */
-    public function changeDbPassword($database, $password)
+    public function changeDbPassword($user, $database, $password)
     {
-        return $this->toString($this->send('v-change-database-password', $this->getUserName(), $database, $password));
+        return $this->toString($this->send('v-change-database-password', $user, $database, $password));
     }
 
     /**
@@ -47,14 +51,15 @@ trait BD
      *
      * @return mixed
      */
-    public function listOnlyBD($database)
+    public function listOnlyBD($user, $database)
     {
-        return  $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-database', $this->getUserName(), $database, 'json'));
+        return  $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-database', $user, $database, 'json'));
     }
 
     /**
      * Add date base.
      *
+     * @param        $user
      * @param        $database
      * @param        $dbuser
      * @param        $password
@@ -63,21 +68,22 @@ trait BD
      *
      * @return mixed
      */
-    public function addDateBase($database, $dbuser, $password, $type, $charset)
+    public function addDateBase($user, $database, $dbuser, $password, $type, $charset)
     {
-        return $this->toString($this->send('v-add-database', $this->getUserName(), $database, $dbuser, $password, $type,
+        return $this->toString($this->send('v-add-database', $user, $database, $dbuser, $password, $type,
             'localhost', $charset));
     }
 
     /**
      * Delete data base.
      *
-     * @param $database
+     * @param string $user
+     * @param        $database
      *
      * @return mixed
      */
-    public function deleteDateBase($database)
+    public function deleteDateBase($user, $database)
     {
-        return $this->toString($this->send('v-delete-database', $this->getUserName(), $database));
+        return $this->toString($this->send('v-delete-database', $user, $database));
     }
 }
