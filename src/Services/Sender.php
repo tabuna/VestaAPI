@@ -94,11 +94,11 @@ class Sender
     }
 
     /**
-     * @return mixed
+     * @return array
      */
-    public function getDecoded()
+    public function getArray()
     {
-        return $this->getArray($this->get());
+        return $this->toArray($this->get());
     }
 
     /**
@@ -108,13 +108,13 @@ class Sender
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->uri);
-        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
+        curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $this->postString);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->timeout);
-        if ($this->sslVerify) {
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        if (!$this->sslVerify) {
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
         }
         $result = curl_exec($ch);
         curl_close($ch);
@@ -126,8 +126,11 @@ class Sender
      *
      * @return mixed
      */
-    private function getArray($json)
+    private function toArray($json)
     {
+        if (empty($json)) {
+            return [];
+        }
         return json_decode($json, true);
     }
 

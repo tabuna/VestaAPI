@@ -31,9 +31,7 @@ trait FileSystem
      */
     public function moveFile($src, $dst)
     {
-        $this->setReturnCode('no');
-
-        return $this->send('v-move-fs-file', $this->getUserName(), $src, $dst);
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-move-fs-file', $this->getUserName(), $src, $dst));
     }
 
     /**
@@ -44,33 +42,27 @@ trait FileSystem
     public function openFile($path = '')
     {
         $path = '/home/'.$this->getUserName().'/'.$path;
-        $this->setReturnCode('no');
-
-        return $this->send('v-open-fs-file', $this->getUserName(), $path);
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-open-fs-file', $this->getUserName(), $path));
     }
 
     /**
-     * @param $patch
+     * @param $path
      *
      * @return mixed
      */
-    public function addDir($patch)
+    public function addDir($path)
     {
-        $this->returnCode = 'no';
-
-        return $this->send('v-add-fs-directory', $this->getUserName(), $patch);
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-add-fs-directory', $this->getUserName(), $path));
     }
 
     /**
-     * @param $patch
+     * @param $path
      *
      * @return mixed
      */
-    public function addFile($patch)
+    public function addFile($path)
     {
-        $this->returnCode = 'no';
-
-        return $this->send('v-add-fs-file', $this->getUserName(), $patch);
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-add-fs-file', $this->getUserName(), $path));
     }
 
     /**
@@ -82,9 +74,7 @@ trait FileSystem
     public function changePermission($srcFile, $permissions)
     {
         $srcFile = '/home/'.$this->getUserName().'/'.$srcFile;
-        $this->returnCode = 'no';
-
-        return $this->send('v-change-fs-file-permission', $this->getUserName(), $srcFile, $permissions);
+        return $this->setReturnCode('no')->toArray($this->send('v-change-fs-file-permission', $this->getUserName(), $srcFile, $permissions));
     }
 
     /**
@@ -95,9 +85,7 @@ trait FileSystem
      */
     public function copyDir($srcDir, $dstDir)
     {
-        $this->setReturnCode('no');
-
-        return $this->send('v-copy-fs-directory', $this->getUserName(), $srcDir, $dstDir);
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-copy-fs-directory', $this->getUserName(), $srcDir, $dstDir));
     }
 
     /**
@@ -108,9 +96,7 @@ trait FileSystem
      */
     public function copyFile($srcDir, $dstDir)
     {
-        $this->setReturnCode('no');
-
-        return $this->send('v-copy-fs-file', $this->getUserName(), $srcDir, $dstDir);
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-copy-fs-file', $this->getUserName(), $srcDir, $dstDir));
     }
 
     /**
@@ -120,10 +106,8 @@ trait FileSystem
      */
     public function deleteDir($dstDir)
     {
-        $this->returnCode = 'no';
         $dstDir = '/home/'.$this->getUserName().'/'.$dstDir;
-
-        return $this->send('v-delete-fs-dir', $this->getUserName(), $dstDir);
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-delete-fs-dir', $this->getUserName(), $dstDir));
     }
 
     /**
@@ -133,10 +117,8 @@ trait FileSystem
      */
     public function deleteFile($dstFile)
     {
-        $this->setReturnCode('no');
         $dstFile = '/home/'.$this->getUserName().'/'.$dstFile;
-
-        return $this->send('v-delete-fs-file', $this->getUserName(), $dstFile);
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-delete-fs-file', $this->getUserName(), $dstFile));
     }
 
     /**
@@ -147,9 +129,7 @@ trait FileSystem
      */
     public function extractArchive($srcFile, $dstDir)
     {
-        $this->setReturnCode('no');
-
-        return $this->send('v-extract-fs-archive', $this->getUserName(), $srcFile, $dstDir);
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-extract-fs-archive', $this->getUserName(), $srcFile, $dstDir));
     }
 
     /**
@@ -160,8 +140,7 @@ trait FileSystem
     public function listDirectory($path = '')
     {
         $path = '/home/'.$this->getUserName().'/'.$path;
-        $this->setReturnCode('no');
-        $responseVesta = $this->send('v-list-fs-directory', $this->getUserName(), $path);
+        $responseVesta = $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-fs-directory', $this->getUserName(), $path));
 
         return $this->parseListing($responseVesta);
     }

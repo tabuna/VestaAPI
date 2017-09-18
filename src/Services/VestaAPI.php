@@ -2,13 +2,14 @@
 
 namespace VestaAPI\Services;
 
-use GuzzleHttp\Client;
 use VestaAPI\Exceptions\VestaExceptions;
 
 class VestaAPI
 {
     use BD, DNS, User, Web, Service, Cron, FileSystem;
 
+    const RETURN_CODE_YES = 'yes',
+          RETURN_CODE_NO = 'no';
     /**
      * @var string
      */
@@ -30,6 +31,11 @@ class VestaAPI
      * @var
      */
     private $host = '';
+
+    /**
+     * @var bool
+     */
+    private $toArray = false;
 
     /**
      * @param string $server
@@ -115,11 +121,21 @@ class VestaAPI
     }
 
     /**
+     * @param bool $toArray
+     *
+     * @return VestaAPI
+     */
+    public function setToArray($toArray)
+    {
+        $this->toArray = $toArray;
+        return $this;
+    }
+
+    /**
      * @param string $cmd
      *
+     * @return Sender
      * @throws VestaExceptions
-     *
-     * @return string
      */
     public function send($cmd)
     {
@@ -137,27 +153,34 @@ class VestaAPI
             $postVars['arg'.$num] = $args[$num];
         }
 
-//        $client = new Client([
-//            'base_uri'    => 'https://'.$this->host.':8083/api/',
-//            'timeout'     => 10.0,
-//            'verify'      => false,
-//            'form_params' => $postVars,
-//        ]);
-//
-//        $query = $client->post('index.php')
-//            ->getBody()
-//            ->getContents();
-
         $query = Sender::create()
-            ->setUri('https://' . $this->host . ':8083/api/index.php')
+            ->setUri('https://' . $this->host . ':8083/api/')
             ->setPostString($postVars)
-            ->setTimeout(10)
-            ->getRaw();
+            ->setTimeout(10);
 
         if ($this->getReturnCode() == 'yes' && $query != 0) {
             throw new VestaExceptions($query);
         }
-
         return $query;
+    }
+
+    /**
+     * @param Sender $sender
+     *
+     * @return mixed
+     */
+    public function toString(Sender $sender)
+    {
+        return $sender->getRaw();
+    }
+
+    /**
+     * @param Sender $sender
+     *
+     * @return array
+     */
+    public function toArray(Sender $sender)
+    {
+        return $sender->getArray();
     }
 }

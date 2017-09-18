@@ -47,5 +47,5 @@ Simple usage
 ```php
 use VestaAPI\Facades\Vesta;
 
-$backups = Vesta::server('testVDS')->user('MyUserName')->listUserBackups();
+$backups = Vesta::server('testVDS')->setUserName('MyUserName')->listUserBackups();
 

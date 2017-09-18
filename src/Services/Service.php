@@ -11,7 +11,7 @@ trait Service
      */
     public function restartDNSServer()
     {
-        return $this->send('v-restart-dns');
+        return $this->toString($this->send('v-restart-dns'));
     }
 
     /**
@@ -21,9 +21,7 @@ trait Service
      */
     public function userSearch($query)
     {
-        $this->setReturnCode('no');
-
-        return json_decode($this->send('v-search-user-object', $this->getUserName(), $query, 'json'), true);
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-search-user-object', $this->getUserName(), $query, 'json'));
     }
 
     /**
@@ -31,9 +29,7 @@ trait Service
      */
     public function listStats()
     {
-        $this->returnCode = 'no';
-        $data = json_decode($this->send('v-list-users-stats', 'json'), true);
-
+        $data = $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-users-stats', 'json'));
         return array_reverse($data, true);
     }
 
@@ -42,9 +38,7 @@ trait Service
      */
     public function listRRD()
     {
-        $this->returnCode = 'no';
-
-        return json_decode($this->send('v-list-sys-rrd', 'json'), true);
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-sys-rrd', 'json'));
     }
 
     /**
@@ -52,9 +46,7 @@ trait Service
      */
     public function listSysInfo()
     {
-        $this->returnCode = 'no';
-
-        return json_decode($this->send('v-list-sys-info', 'json'), true);
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-sys-info', 'json'));
     }
 
     /**
@@ -62,9 +54,7 @@ trait Service
      */
     public function listSysService()
     {
-        $this->returnCode = 'no';
-
-        return json_decode($this->send('v-list-sys-services', 'json'), true);
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-sys-services', 'json'));
     }
 
     /**
@@ -74,7 +64,7 @@ trait Service
      */
     public function restartService($service)
     {
-        return $this->send('v-restart-service', $service);
+        return $this->toString($this->send('v-restart-service', $service));
     }
 
     /**
@@ -84,7 +74,7 @@ trait Service
      */
     public function startService($service)
     {
-        return $this->send('v-start-service', $service);
+        return $this->toString($this->send('v-start-service', $service));
     }
 
     /**
@@ -94,7 +84,7 @@ trait Service
      */
     public function stopService($service)
     {
-        return $this->send('v-stop-service', $service);
+        return $this->toString($this->send('v-stop-service', $service));
     }
 
     /**
@@ -102,9 +92,7 @@ trait Service
      */
     public function listIp()
     {
-        $this->returnCode = 'no';
-
-        return json_decode($this->send('v-list-sys-ips', 'json'), true);
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-sys-ips', 'json'));
     }
 
     /**
@@ -114,9 +102,7 @@ trait Service
      */
     public function getIp($ip)
     {
-        $this->returnCode = 'no';
-
-        return json_decode($this->send('v-list-sys-ip', $ip, 'json'), true);
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-sys-ip', $ip, 'json'));
     }
 
     /**
@@ -126,7 +112,7 @@ trait Service
      */
     public function rebuildWebDomains()
     {
-        return $this->send('v-rebuild-web-domains', $this->getUserName());
+        return $this->toString($this->send('v-rebuild-web-domains', $this->getUserName()));
     }
 
     /**
@@ -136,7 +122,7 @@ trait Service
      */
     public function rebuildDNSDomains()
     {
-        return $this->send('v-rebuild-dns-domains', $this->getUserName());
+        return $this->toString($this->send('v-rebuild-dns-domains', $this->getUserName()));
     }
 
     /**
@@ -144,7 +130,7 @@ trait Service
      */
     public function rebuildMailDomains()
     {
-        return $this->send('v-rebuild-mail-domains', $this->getUserName());
+        return $this->toString($this->send('v-rebuild-mail-domains', $this->getUserName()));
     }
 
     /**
@@ -152,7 +138,7 @@ trait Service
      */
     public function rebuildDataBases()
     {
-        return $this->send('v-rebuild-databases', $this->getUserName());
+        return $this->toString($this->send('v-rebuild-databases', $this->getUserName()));
     }
 
     /**
@@ -162,7 +148,7 @@ trait Service
      */
     public function rebuildCronJobs()
     {
-        return $this->send('v-rebuild-cron-jobs', $this->getUserName());
+        return $this->toString($this->send('v-rebuild-cron-jobs', $this->getUserName()));
     }
 
     /**
@@ -170,7 +156,7 @@ trait Service
      */
     public function updateUserCounters()
     {
-        return $this->send('v-update-user-counters', $this->getUserName());
+        return $this->toString($this->send('v-update-user-counters', $this->getUserName()));
     }
 
     /**
@@ -180,6 +166,6 @@ trait Service
      */
     public function updateSysVesta($package)
     {
-        return $this->send('v-update-sys-vesta', $package);
+        return $this->toString($this->send('v-update-sys-vesta', $package));
     }
 }

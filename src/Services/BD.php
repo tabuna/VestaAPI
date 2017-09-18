@@ -11,22 +11,20 @@ trait BD
      */
     public function listBD()
     {
-        $this->setReturnCode('no');
-
-        return json_decode($this->send('v-list-databases', $this->getUserName(), 'json'), true);
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-databases', $this->getUserName(), 'json'));
     }
 
     /**
      * Change user database.
      *
      * @param $database
-     * @param $dbuser
+     * @param $dbUser
      *
      * @return mixed
      */
-    public function changeDbUser($database, $dbuser)
+    public function changeDbUser($database, $dbUser)
     {
-        return $this->send('v-change-database-user', $this->getUserName(), $database, $dbuser);
+        return $this->toString($this->send('v-change-database-user', $this->getUserName(), $database, $dbUser));
     }
 
     /**
@@ -39,7 +37,7 @@ trait BD
      */
     public function changeDbPassword($database, $password)
     {
-        return $this->send('v-change-database-password', $this->getUserName(), $database, $password);
+        return $this->toString($this->send('v-change-database-password', $this->getUserName(), $database, $password));
     }
 
     /**
@@ -51,11 +49,7 @@ trait BD
      */
     public function listOnlyBD($database)
     {
-        $this->setReturnCode('no');
-        $listBd = $this->send('v-list-database', $this->getUserName(), $database, 'json');
-        $data = json_decode($listBd, true);
-
-        return $data;
+        return  $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-database', $this->getUserName(), $database, 'json'));
     }
 
     /**
@@ -71,8 +65,8 @@ trait BD
      */
     public function addDateBase($database, $dbuser, $password, $type, $charset)
     {
-        return $this->send('v-add-database', $this->getUserName(), $database, $dbuser, $password, $type,
-            'localhost', $charset);
+        return $this->toString($this->send('v-add-database', $this->getUserName(), $database, $dbuser, $password, $type,
+            'localhost', $charset));
     }
 
     /**
@@ -84,6 +78,6 @@ trait BD
      */
     public function deleteDateBase($database)
     {
-        return $this->send('v-delete-database', $this->getUserName(), $database);
+        return $this->toString($this->send('v-delete-database', $this->getUserName(), $database));
     }
 }
