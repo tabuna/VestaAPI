@@ -7,7 +7,7 @@ trait FileSystem
     /**
      * @var string
      */
-    protected $delimeter = '|';
+    protected $delimiter = '|';
 
     /**
      * @var array
@@ -31,9 +31,9 @@ trait FileSystem
      */
     public function moveFile($src, $dst)
     {
-        $this->returnCode = 'no';
+        $this->setReturnCode('no');
 
-        return $this->send('v-move-fs-file', $this->userName, $src, $dst);
+        return $this->send('v-move-fs-file', $this->getUserName(), $src, $dst);
     }
 
     /**
@@ -43,10 +43,10 @@ trait FileSystem
      */
     public function openFile($path = '')
     {
-        $path = '/home/'.$this->userName.'/'.$path;
-        $this->returnCode = 'no';
+        $path = '/home/'.$this->getUserName().'/'.$path;
+        $this->setReturnCode('no');
 
-        return $this->send('v-open-fs-file', $this->userName, $path);
+        return $this->send('v-open-fs-file', $this->getUserName(), $path);
     }
 
     /**
@@ -58,7 +58,7 @@ trait FileSystem
     {
         $this->returnCode = 'no';
 
-        return $this->send('v-add-fs-directory', $this->userName, $patch);
+        return $this->send('v-add-fs-directory', $this->getUserName(), $patch);
     }
 
     /**
@@ -70,7 +70,7 @@ trait FileSystem
     {
         $this->returnCode = 'no';
 
-        return $this->send('v-add-fs-file', $this->userName, $patch);
+        return $this->send('v-add-fs-file', $this->getUserName(), $patch);
     }
 
     /**
@@ -81,10 +81,10 @@ trait FileSystem
      */
     public function changePermission($srcFile, $permissions)
     {
-        $srcFile = '/home/'.$this->userName.'/'.$srcFile;
+        $srcFile = '/home/'.$this->getUserName().'/'.$srcFile;
         $this->returnCode = 'no';
 
-        return $this->send('v-change-fs-file-permission', $this->userName, $srcFile, $permissions);
+        return $this->send('v-change-fs-file-permission', $this->getUserName(), $srcFile, $permissions);
     }
 
     /**
@@ -95,9 +95,9 @@ trait FileSystem
      */
     public function copyDir($srcDir, $dstDir)
     {
-        $this->returnCode = 'no';
+        $this->setReturnCode('no');
 
-        return $this->send('v-copy-fs-directory', $this->userName, $srcDir, $dstDir);
+        return $this->send('v-copy-fs-directory', $this->getUserName(), $srcDir, $dstDir);
     }
 
     /**
@@ -108,9 +108,9 @@ trait FileSystem
      */
     public function copyFile($srcDir, $dstDir)
     {
-        $this->returnCode = 'no';
+        $this->setReturnCode('no');
 
-        return $this->send('v-copy-fs-file', $this->userName, $srcDir, $dstDir);
+        return $this->send('v-copy-fs-file', $this->getUserName(), $srcDir, $dstDir);
     }
 
     /**
@@ -121,9 +121,9 @@ trait FileSystem
     public function deleteDir($dstDir)
     {
         $this->returnCode = 'no';
-        $dstDir = '/home/'.$this->userName.'/'.$dstDir;
+        $dstDir = '/home/'.$this->getUserName().'/'.$dstDir;
 
-        return $this->send('v-delete-fs-dir', $this->userName, $dstDir);
+        return $this->send('v-delete-fs-dir', $this->getUserName(), $dstDir);
     }
 
     /**
@@ -133,10 +133,10 @@ trait FileSystem
      */
     public function deleteFile($dstFile)
     {
-        $this->returnCode = 'no';
-        $dstFile = '/home/'.$this->userName.'/'.$dstFile;
+        $this->setReturnCode('no');
+        $dstFile = '/home/'.$this->getUserName().'/'.$dstFile;
 
-        return $this->send('v-delete-fs-file', $this->userName, $dstFile);
+        return $this->send('v-delete-fs-file', $this->getUserName(), $dstFile);
     }
 
     /**
@@ -147,9 +147,9 @@ trait FileSystem
      */
     public function extractArchive($srcFile, $dstDir)
     {
-        $this->returnCode = 'no';
+        $this->setReturnCode('no');
 
-        return $this->send('v-extract-fs-archive', $this->userName, $srcFile, $dstDir);
+        return $this->send('v-extract-fs-archive', $this->getUserName(), $srcFile, $dstDir);
     }
 
     /**
@@ -159,9 +159,9 @@ trait FileSystem
      */
     public function listDirectory($path = '')
     {
-        $path = '/home/'.$this->userName.'/'.$path;
-        $this->returnCode = 'no';
-        $responseVesta = $this->send('v-list-fs-directory', $this->userName, $path);
+        $path = '/home/'.$this->getUserName().'/'.$path;
+        $this->setReturnCode('no');
+        $responseVesta = $this->send('v-list-fs-directory', $this->getUserName(), $path);
 
         return $this->parseListing($responseVesta);
     }
@@ -178,8 +178,10 @@ trait FileSystem
         $data = [];
 
         foreach ($raw as $o) {
-            $info = explode($this->delimeter, $o);
-
+            $info = explode($this->delimiter, $o);
+            if (empty($info)) {
+                continue;
+            }
             $value = [
                 'type'        => $info[$this->info_positions['TYPE']],
                 'permissions' => $info[$this->info_positions['PERMISSIONS']],
@@ -190,7 +192,6 @@ trait FileSystem
                 'size'        => $info[$this->info_positions['SIZE']],
                 'name'        => (!empty($info[$this->info_positions['NAME']])) ? $info[$this->info_positions['NAME']] : '../',
             ];
-
             array_push($data, $value);
         }
 

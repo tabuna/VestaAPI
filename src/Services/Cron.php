@@ -12,7 +12,7 @@ trait Cron
     public function listCron()
     {
         $this->returnCode = 'no';
-        $listDns = $this->send('v-list-cron-jobs', $this->userName, 'json');
+        $listDns = $this->send('v-list-cron-jobs', $this->getUserName(), 'json');
         $data = json_decode($listDns, true);
 
         return $data;
@@ -32,7 +32,7 @@ trait Cron
      */
     public function addCron($min, $hour, $day, $month, $wday, $cmd)
     {
-        return $this->send('v-add-cron-job', $this->userName, $min, $hour, $day, $month, $wday,
+        return $this->send('v-add-cron-job', $this->getUserName(), $min, $hour, $day, $month, $wday,
             $cmd);
     }
 
@@ -46,7 +46,7 @@ trait Cron
     public function showCron($job)
     {
         $this->returnCode = 'no';
-        $request = $this->send('v-list-cron-job', $this->userName, $job, 'json');
+        $request = $this->send('v-list-cron-job', $this->getUserName(), $job, 'json');
         $data = json_decode($request, true);
 
         return $data;
@@ -61,7 +61,7 @@ trait Cron
      */
     public function deleteCron($job)
     {
-        return $this->send('v-delete-cron-job', $this->userName, $job);
+        return $this->send('v-delete-cron-job', $this->getUserName(), $job);
     }
 
     /**
@@ -79,7 +79,7 @@ trait Cron
      */
     public function editCron($job, $min, $hour, $day, $month, $wday, $cmd)
     {
-        return $this->send('v-change-cron-job', $this->userName, $job, $min, $hour, $day, $month,
+        return $this->send('v-change-cron-job', $this->getUserName(), $job, $min, $hour, $day, $month,
             $wday, $cmd);
     }
 }

@@ -11,7 +11,7 @@ trait DNS
      */
     public function listDNS()
     {
-        $this->returnCode = 'no';
+        $this->setReturnCode('no');
         $listDns = $this->send('v-list-dns-domains', $this->userName, 'json');
         $data = json_decode($listDns, true);
 
@@ -27,7 +27,7 @@ trait DNS
      */
     public function listOnlyDNS($dns)
     {
-        $this->returnCode = 'no';
+        $this->setReturnCode('no');
         $listDNS = $this->send('v-list-dns-domain', $this->userName, $dns, 'json');
         $data = json_decode($listDNS, true);
 
