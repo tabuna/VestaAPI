@@ -3,7 +3,7 @@
 namespace VestaAPI\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Tabuna\Vesta\Services\VestaAPI;
+use VestaAPI\Services\VestaAPI;
 
 class Vesta extends Facade
 {

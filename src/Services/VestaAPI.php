@@ -3,7 +3,7 @@
 namespace VestaAPI\Services;
 
 use GuzzleHttp\Client;
-use Tabuna\Vesta\Exceptions\VestaExceptions;
+use VestaAPI\Exceptions\VestaExceptions;
 
 class VestaAPI
 {
