@@ -6,7 +6,7 @@ use VestaAPI\Exceptions\VestaExceptions;
 
 class VestaAPI
 {
-    use BD, DNS, User, Web, Service, Cron, FileSystem;
+    use Db, Dns, User, Web, Service, Cron, FileSystem;
 
     const RETURN_CODE_YES = 'yes',
           RETURN_CODE_NO = 'no';

@@ -2,7 +2,7 @@
 
 namespace VestaAPI\Services;
 
-trait BD
+trait Db
 {
     /**
      * List data base.

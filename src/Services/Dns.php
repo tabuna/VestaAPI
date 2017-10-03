@@ -2,7 +2,7 @@
 
 namespace VestaAPI\Services;
 
-trait DNS
+trait Dns
 {
     /**
      * List DNS.
