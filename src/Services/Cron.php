@@ -7,19 +7,16 @@ trait Cron
     /**
      * Cron list.
      *
-     * @param string $user
-     *
      * @return mixed
      */
-    public function listCron($user)
+    public function listCron()
     {
-        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-cron-jobs', $user, 'json'));
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-cron-jobs', $this->getUserName(), 'json'));
     }
 
     /**
      * Add Cron.
      *
-     * @param string $user
      * @param        $min
      * @param        $hour
      * @param        $day
@@ -29,41 +26,38 @@ trait Cron
      *
      * @return mixed
      */
-    public function addCron($user, $min, $hour, $day, $month, $wday, $cmd)
+    public function addCron($min, $hour, $day, $month, $wday, $cmd)
     {
-        return $this->toString($this->send('v-add-cron-job', $user, $min, $hour, $day, $month, $wday, $cmd));
+        return $this->toString($this->send('v-add-cron-job', $this->getUserName(), $min, $hour, $day, $month, $wday, $cmd));
     }
 
     /**
      * Show Cron.
      *
-     * @param string $user
      * @param        $job
      *
      * @return mixed
      */
-    public function showCron($user, $job)
+    public function showCron($job)
     {
-        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-cron-job', $user, $job, 'json'));
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-cron-job', $this->getUserName(), $job, 'json'));
     }
 
     /**
      * Delete cron.
      *
-     * @param string $user
      * @param        $job
      *
      * @return mixed
      */
-    public function deleteCron($user, $job)
+    public function deleteCron($job)
     {
-        return $this->toString($this->send('v-delete-cron-job', $user, $job));
+        return $this->toString($this->send('v-delete-cron-job', $this->getUserName(), $job));
     }
 
     /**
      * Edit cron.
      *
-     * @param string $user
      * @param        $job
      * @param        $min
      * @param        $hour
@@ -74,8 +68,8 @@ trait Cron
      *
      * @return mixed
      */
-    public function editCron($user, $job, $min, $hour, $day, $month, $wday, $cmd)
+    public function editCron($job, $min, $hour, $day, $month, $wday, $cmd)
     {
-        return $this->toString($this->send('v-change-cron-job', $user, $job, $min, $hour, $day, $month, $wday, $cmd));
+        return $this->toString($this->send('v-change-cron-job', $this->getUserName(), $job, $min, $hour, $day, $month, $wday, $cmd));
     }
 }

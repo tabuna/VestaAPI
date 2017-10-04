@@ -106,56 +106,46 @@ trait Service
     }
 
     /**
-     * @param $user
-     *
      * @return mixed
      * @internal param string $restart
      */
-    public function rebuildWebDomains($user)
+    public function rebuildWebDomains()
     {
-        return $this->toString($this->send('v-rebuild-web-domains', $user));
+        return $this->toString($this->send('v-rebuild-web-domains', $this->getUserName()));
     }
 
     /**
-     * @param $user
-     *
      * @return mixed
      * @internal param string $restart
      */
-    public function rebuildDNSDomains($user)
+    public function rebuildDNSDomains()
     {
-        return $this->toString($this->send('v-rebuild-dns-domains', $user));
+        return $this->toString($this->send('v-rebuild-dns-domains', $this->getUserName()));
     }
 
     /**
-     * @param $user
-     *
      * @return mixed
      */
-    public function rebuildMailDomains($user)
+    public function rebuildMailDomains()
     {
-        return $this->toString($this->send('v-rebuild-mail-domains', $user));
+        return $this->toString($this->send('v-rebuild-mail-domains', $this->getUserName()));
     }
 
     /**
-     * @param $user
-     *
      * @return mixed
      */
-    public function rebuildDataBases($user)
+    public function rebuildDataBases()
     {
-        return $this->toString($this->send('v-rebuild-databases', $user));
+        return $this->toString($this->send('v-rebuild-databases', $this->getUserName()));
     }
 
     /**
-     * @param $user
-     *
      * @return mixed
      * @internal param string $restart
      */
-    public function rebuildCronJobs($user)
+    public function rebuildCronJobs()
     {
-        return $this->toString($this->send('v-rebuild-cron-jobs', $user));
+        return $this->toString($this->send('v-rebuild-cron-jobs', $this->getUserName()));
     }
 
     /**
@@ -165,7 +155,7 @@ trait Service
      */
     public function updateUserCounters($user)
     {
-        return $this->toString($this->send('v-update-user-counters', $user));
+        return $this->toString($this->send('v-update-user-counters', $this->getUserName()));
     }
 
     /**

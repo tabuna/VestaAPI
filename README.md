@@ -51,5 +51,5 @@ Simple usage
 ```php
 use VestaAPI\Facades\Vesta;
 
-$backups = Vesta::server('testVDS')->setUserName('MyUserName')->listUserBackups($userThatUWantView);
+$backups = Vesta::server('testVDS')->setUserName($userThatUWantToView)->listUserBackups();
 

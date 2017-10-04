@@ -26,89 +26,79 @@ trait User
      *
      * @return mixed
      */
-    public function changeUserPassword($user, $password)
+    public function changeUserPassword($password)
     {
-        return $this->toString($this->send('v-change-user-password', $user, $password));
+        return $this->toString($this->send('v-change-user-password', $this->getUserName(), $password));
     }
 
     /**
-     * @param $user
      * @param $email
      *
      * @return mixed
      */
-    public function changeUserEmail($user, $email)
+    public function changeUserEmail($email)
     {
-        return $this->toString($this->send('v-change-user-contact', $user, $email));
+        return $this->toString($this->send('v-change-user-contact', $this->getUserName(), $email));
     }
 
     /**
      * List User Account.
      *
-     * @param $user
-     *
      * @return mixed
      */
-    public function listUserAccount($user)
+    public function listUserAccount()
     {
-        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-user', $user, 'json'));
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-user', $this->getUserName(), 'json'));
     }
 
     /**
-     * @param $user
-     *
      * @return mixed
      */
-    public function listUserLog($user)
+    public function listUserLog()
     {
-        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-user-log', $user, 'json'));
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-user-log', $this->getUserName(), 'json'));
     }
 
     /**
      * List User Backups.
      *
-     * @param $user
-     *
      * @return mixed
      */
-    public function listUserBackups($user)
+    public function listUserBackups()
     {
-        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-user-backups', $user, 'json'));
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-user-backups', $this->getUserName(), 'json'));
     }
 
     /**
      * Delete backup user.
      *
-     * @param $user
      * @param $backup
      *
      * @return mixed
      */
-    public function deleteUserBackup($user, $backup)
+    public function deleteUserBackup($backup)
     {
-        return $this->toString($this->send('v-delete-user-backup', $user, $backup));
+        return $this->toString($this->send('v-delete-user-backup', $this->getUserName(), $backup));
     }
 
     /**
      * Show Backup.
      *
-     * @param $user
      * @param $backup
      *
      * @return mixed
      */
-    public function showUserBackup($user, $backup)
+    public function showUserBackup($backup)
     {
-        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-user-backup', $user, $backup, 'json'));
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-user-backup', $this->getUserName(), $backup, 'json'));
     }
 
     /**
-     * @param $user
      * @param $arg
      *
      * @return mixed
      */
-    public function restoreBackup($user, $arg)
+    public function restoreBackup($arg)
     {
         $backup = 'no';
         $web = 'no';
@@ -119,18 +109,16 @@ trait User
         $udir = 'no';
         extract($arg, EXTR_OVERWRITE);
 
-        return $this->toString($this->send('v-schedule-user-restore', $user, $backup, $web, $dns, $mail,
+        return $this->toString($this->send('v-schedule-user-restore', $this->getUserName(), $backup, $web, $dns, $mail,
             $db, $cron, $udir));
     }
 
     /**
-     * @param $user
-     *
      * @return mixed
      */
-    public function suspendUser($user)
+    public function suspendUser()
     {
-        return $this->toString($this->send('v-suspend-user', $user, 'no'));
+        return $this->toString($this->send('v-suspend-user', $this->getUserName(), 'no'));
     }
 
     /**
@@ -152,35 +140,31 @@ trait User
     }
 
     /**
-     * @param $user
      * @param $option
      *
      * @return mixed
      */
-    public function getValue($user, $option)
+    public function getValue($option)
     {
-        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-get-user-value', $user, $option));
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-get-user-value', $this->getUserName(), $option));
     }
 
     /**
-     * @param        $user
      * @param string $ssh
      *
      * @return mixed
      */
-    public function changeShell($user, $ssh = 'nologin')
+    public function changeShell($ssh = 'nologin')
     {
-        return $this->toString($this->send('v-change-user-shell', $user, $ssh));
+        return $this->toString($this->send('v-change-user-shell', $this->getUserName(), $ssh));
     }
 
     /**
-     * @param $user
-     *
      * @return mixed
      */
-    public function adminListUserAccount($user)
+    public function adminListUserAccount()
     {
-        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-user', $user, 'json'));
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-user', $this->getUserName(), 'json'));
     }
 
     /**

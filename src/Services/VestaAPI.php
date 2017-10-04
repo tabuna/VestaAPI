@@ -10,6 +10,12 @@ class VestaAPI
 
     const RETURN_CODE_YES = 'yes',
           RETURN_CODE_NO = 'no';
+
+    /**
+     * @var string
+     */
+    private $adminUser = '';
+
     /**
      * @var string
      */
@@ -59,8 +65,9 @@ class VestaAPI
             throw new \Exception('Specified server config does not contain host or key');
         }
 
-        $this->key = (string) $allServers[$server]['key'];
-        $this->host = (string) $allServers[$server]['host'];
+        $this->key = $allServers[$server]['key'];
+        $this->host = $allServers[$server]['host'];
+        $this->adminUser = $allServers[$server]['admin'];
 
         return $this;
     }
@@ -140,7 +147,7 @@ class VestaAPI
     public function send($cmd)
     {
         $postVars = [
-            'user'       => $this->userName,
+            'user'       => $this->adminUser,
             'hash'       => $this->key, // api key
             'returncode' => $this->returnCode,
             'cmd'        => $cmd,

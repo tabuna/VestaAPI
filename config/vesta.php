@@ -19,6 +19,7 @@ return [
     'servers' => [
         'testVDS' => [
             'host' => '0.0.0.0',
+            'admin' => 'admin',
             'key'  => 'secretString',
         ],
     ],
