@@ -30,7 +30,7 @@ $ composer require tabuna/vesta-api
 
 Publication
 ```php
-php artisan vendor:publish -all
+php artisan vendor:publish --provider="VestaAPI\Providers\VestaServiceProvider"
 ```
 
 Generate api key
