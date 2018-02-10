@@ -136,7 +136,7 @@ trait User
     {
         return $this->send('v-delete-user', $this->userName, 'no');
     }
-    
+
     /**
      * @return mixed
      */
@@ -144,7 +144,7 @@ trait User
     {
         return $this->send('v-suspend-user', $this->userName, 'no');
     }
-    
+
     /**
      * @return mixed
      */
