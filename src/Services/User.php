@@ -136,6 +136,14 @@ trait User
     {
         return $this->send('v-suspend-user', $this->userName, 'no');
     }
+    
+    /**
+     * @return mixed
+     */
+    public function unsuspendUser()
+    {
+        return $this->send('v-unsuspend-user', $this->userName, 'no');
+    }
 
     /**
      * @param $package
