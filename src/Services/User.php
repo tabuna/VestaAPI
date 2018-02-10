@@ -132,6 +132,14 @@ trait User
     /**
      * @return mixed
      */
+    public function deleteUser()
+    {
+        return $this->send('v-delete-user', $this->userName, 'no');
+    }
+    
+    /**
+     * @return mixed
+     */
     public function suspendUser()
     {
         return $this->send('v-suspend-user', $this->userName, 'no');
