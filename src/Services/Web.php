@@ -13,10 +13,7 @@ trait Web
      */
     public function listEditWebDomain($domain)
     {
-        $this->returnCode = 'no';
-        $answer = $this->send('v-list-web-domain', $this->userName, $domain, 'json');
-
-        $data = json_decode($answer, true);
+        $data = $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-web-domain', $this->getUserName(), $domain, 'json'));
 
         $ftpU = strpos($data[$domain]['FTP_USER'], ':');
         $ftpPath = strpos($data[$domain]['FTP_PATH'], ':');
@@ -40,11 +37,7 @@ trait Web
      */
     public function listWebDomain()
     {
-        $this->returnCode = 'no';
-        $answer = $this->send('v-list-web-domains', $this->userName, 'json');
-        $data = json_decode($answer, true);
-
-        return $data;
+        return $this->setReturnCode(self::RETURN_CODE_NO)->toArray($this->send('v-list-web-domains', $this->getUserName(), 'json'));
     }
 
     /**
@@ -57,7 +50,7 @@ trait Web
      */
     public function addWebDomain($domain, $ip)
     {
-        return $this->send('v-add-web-domain', $this->userName, $domain, $ip);
+        return $this->toString($this->send('v-add-web-domain', $this->getUserName(), $domain, $ip));
     }
 
     /**
@@ -70,7 +63,7 @@ trait Web
      */
     public function addDns($domain, $ip)
     {
-        return $this->send('v-add-dns-domain', $this->userName, $domain, $ip);
+        return $this->toString($this->send('v-add-dns-domain', $this->getUserName(), $domain, $ip));
     }
 
     /**
@@ -82,7 +75,7 @@ trait Web
      */
     public function addMail($domain)
     {
-        return $this->send('v-add-mail-domain', $this->userName, $domain);
+        return $this->toString($this->send('v-add-mail-domain', $this->getUserName(), $domain));
     }
 
     /**
@@ -93,7 +86,7 @@ trait Web
      */
     public function addWebDomainAlias($domain, $alias)
     {
-        $this->send('v-add-web-domain-alias', $this->userName, $domain, $alias, 'no');
+        return $this->toString($this->send('v-add-web-domain-alias', $this->getUserName(), $domain, $alias, 'no'));
     }
 
     /**
@@ -106,7 +99,7 @@ trait Web
      */
     public function addDnsAlias($domain, $alias)
     {
-        return $this->send('v-add-dns-on-web-alias', $this->userName, $domain, $alias, 'no');
+        return $this->toString($this->send('v-add-dns-on-web-alias', $this->getUserName(), $domain, $alias, 'no'));
     }
 
     /**
@@ -119,7 +112,7 @@ trait Web
      */
     public function deleteWebDomainAlias($domain, $alias)
     {
-        return $this->send('v-delete-web-domain-alias', $this->userName, $domain, $alias, 'no');
+        return $this->toString($this->send('v-delete-web-domain-alias', $this->getUserName(), $domain, $alias, 'no'));
     }
 
     /**
@@ -134,8 +127,8 @@ trait Web
      */
     public function addFtpDomain($domain, $ftpUserName, $ftpPassword, $ftpPath)
     {
-        return $this->send('v-add-web-domain-ftp', $this->userName, $domain, $ftpUserName, $ftpPassword,
-            $ftpPath);
+        return $this->toString($this->send('v-add-web-domain-ftp', $this->getUserName(), $domain, $ftpUserName, $ftpPassword,
+            $ftpPath));
     }
 
     /**
@@ -148,7 +141,7 @@ trait Web
      */
     public function addDomainProxy($domain, $ext)
     {
-        return $this->send('v-add-web-domain-proxy', $this->userName, $domain, '', $ext, 'no');
+        return $this->toString($this->send('v-add-web-domain-proxy', $this->getUserName(), $domain, '', $ext, 'no'));
     }
 
     /**
@@ -160,7 +153,7 @@ trait Web
      */
     public function deleteDomain($domain)
     {
-        return $this->send('v-delete-domain', $this->userName, $domain);
+        return $this->toString($this->send('v-delete-domain', $this->getUserName(), $domain));
     }
 
     /**
@@ -173,7 +166,7 @@ trait Web
      */
     public function changeWebDomainIp($domain, $ip)
     {
-        return $this->send('v-change-web-domain-ip', $this->userName, $domain, $ip, 'no');
+        return $this->toString($this->send('v-change-web-domain-ip', $this->getUserName(), $domain, $ip, 'no'));
     }
 
     /**
@@ -186,7 +179,7 @@ trait Web
      */
     public function deleteWebDomain($domain, $ftpUserName)
     {
-        return $this->send('v-delete-web-domain-ftp', $this->userName, $domain, $ftpUserName);
+        return $this->toString($this->send('v-delete-web-domain-ftp', $this->getUserName(), $domain, $ftpUserName));
     }
 
     /**
@@ -200,8 +193,8 @@ trait Web
      */
     public function changeWebDomain($domain, $ftpUserName, $ftpPath)
     {
-        return $this->send('v-change-web-domain-ftp-path', $this->userName, $domain, $ftpUserName,
-            $ftpPath);
+        return $this->toString($this->send('v-change-web-domain-ftp-path', $this->getUserName(), $domain, $ftpUserName,
+            $ftpPath));
     }
 
     /**
@@ -215,7 +208,7 @@ trait Web
      */
     public function changeFtpPassword($domain, $ftpUserName, $password)
     {
-        return $this->send('v-change-web-domain-ftp-password', $this->userName, $domain, $ftpUserName,
-            $password);
+        return $this->toString($this->send('v-change-web-domain-ftp-password', $this->getUserName(), $domain, $ftpUserName,
+            $password));
     }
 }

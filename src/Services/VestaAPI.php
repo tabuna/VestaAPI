@@ -2,24 +2,25 @@
 
 namespace VestaAPI\Services;
 
-use GuzzleHttp\Client;
 use VestaAPI\Exceptions\VestaExceptions;
 
 class VestaAPI
 {
     use BD, DNS, User, Web, Service, Cron, FileSystem;
 
+    const RETURN_CODE_YES = 'yes',
+          RETURN_CODE_NO = 'no';
     /**
-     * @var
+     * @var string
      */
-    public $userName = '';
+    private $userName = '';
 
     /**
      * return no|yes|json.
      *
      * @var string
      */
-    public $returnCode = 'yes';
+    private $returnCode = 'yes';
 
     /**
      * @var string
@@ -30,6 +31,11 @@ class VestaAPI
      * @var
      */
     private $host = '';
+
+    /**
+     * @var bool
+     */
+    private $toArray = false;
 
     /**
      * @param string $server
@@ -80,7 +86,7 @@ class VestaAPI
     public function setUserName($userName = '')
     {
         if (empty($userName)) {
-            throw new \Exception('Server is not specified');
+            throw new \Exception('User is not specified');
         }
         $this->userName = $userName;
 
@@ -88,17 +94,54 @@ class VestaAPI
     }
 
     /**
+     * @return string
+     */
+    public function getUserName()
+    {
+        return $this->userName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReturnCode()
+    {
+        return $this->returnCode;
+    }
+
+    /**
+     * @param string $returnCode
+     *
+     * @return VestaAPI
+     */
+    public function setReturnCode($returnCode)
+    {
+        $this->returnCode = $returnCode;
+        return $this;
+    }
+
+    /**
+     * @param bool $toArray
+     *
+     * @return VestaAPI
+     */
+    public function setToArray($toArray)
+    {
+        $this->toArray = $toArray;
+        return $this;
+    }
+
+    /**
      * @param string $cmd
      *
+     * @return Sender
      * @throws VestaExceptions
-     *
-     * @return string
      */
     public function send($cmd)
     {
         $postVars = [
             'user'       => $this->userName,
-            'password'   => $this->key,
+            'hash'       => $this->key, // api key
             'returncode' => $this->returnCode,
             'cmd'        => $cmd,
         ];
@@ -110,21 +153,34 @@ class VestaAPI
             $postVars['arg'.$num] = $args[$num];
         }
 
-        $client = new Client([
-            'base_uri'    => 'https://'.$this->host.':8083/api/',
-            'timeout'     => 10.0,
-            'verify'      => false,
-            'form_params' => $postVars,
-        ]);
+        $query = Sender::create()
+            ->setUri('https://' . $this->host . ':8083/api/')
+            ->setPostString($postVars)
+            ->setTimeout(10);
 
-        $query = $client->post('index.php')
-            ->getBody()
-            ->getContents();
-
-        if ($this->returnCode == 'yes' && $query != 0) {
+        if ($this->getReturnCode() == 'yes' && $query != 0) {
             throw new VestaExceptions($query);
         }
-
         return $query;
+    }
+
+    /**
+     * @param Sender $sender
+     *
+     * @return mixed
+     */
+    public function toString(Sender $sender)
+    {
+        return $sender->getRaw();
+    }
+
+    /**
+     * @param Sender $sender
+     *
+     * @return array
+     */
+    public function toArray(Sender $sender)
+    {
+        return $sender->getArray();
     }
 }
