@@ -1,5 +1,5 @@
 {
-  "name": "elicast/vesta-api",
+  "name": "heliocg/vesta-api",
   "description": "VestaCP client for Laravel",
   "keywords": [
     "framework",
@@ -11,7 +11,7 @@
   "type": "library",
   "require": {
     "guzzlehttp/guzzle": "^6.2",
-    "laravel/framework": "^6.0"
+    "laravel/framework": "^5.0"
   },
   "license": "GPL-3.0",
   "support": {
@@ -19,6 +19,10 @@
     "source": "https://github.com/tabuna/VestaAPI"
   },
   "authors": [
+    {
+      "name": "Alexandr Chernyaev",
+      "email": "bliz48rus@gmail.com"
+    },
     {
       "name": "Hélio CG",
       "email": "suporte@elicast.com.br"
