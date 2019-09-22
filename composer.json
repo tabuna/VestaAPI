@@ -9,8 +9,7 @@
     "panel"
   ],
   "type": "library",
-  "minimum-stability": "stable",
-  "prefer-stable": true,
+  "minimum-stability": "stable"
   "require": {
     "guzzlehttp/guzzle": "^6.3",
     "laravel/framework": "^6.0"
