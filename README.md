@@ -25,7 +25,7 @@ Powerful API client hosting VestaCP for Laravel
 Going your project directory on shell and run this command: 
 
 ```sh
-$ composer require tabuna/vesta-api
+$ composer require elicast/vesta-api
 ```
 
 Publication
