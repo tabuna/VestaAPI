@@ -9,8 +9,9 @@
     "panel"
   ],
   "type": "library",
+  "minimum-stability": "dev",
   "require": {
-    "guzzlehttp/guzzle": "^6.2",
+    "guzzlehttp/guzzle": "^6.3",
     "laravel/framework": "^6.0"
   },
   "license": "GPL-3.0",
@@ -42,7 +43,5 @@
         "Dashboard": "VestaAPI\\Facades\\Vesta"
       }
     }
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
+  }
 }
