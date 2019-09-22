@@ -1,5 +1,5 @@
 {
-  "name": "tabuna/vesta-api",
+  "name": "elicast/vesta-api",
   "description": "VestaCP client for Laravel",
   "keywords": [
     "framework",
@@ -11,7 +11,7 @@
   "type": "library",
   "require": {
     "guzzlehttp/guzzle": "^6.2",
-    "laravel/framework": "^5.0"
+    "laravel/framework": "^6.0"
   },
   "license": "GPL-3.0",
   "support": {
@@ -20,8 +20,8 @@
   },
   "authors": [
     {
-      "name": "Alexandr Chernyaev",
-      "email": "bliz48rus@gmail.com"
+      "name": "Hélio CG",
+      "email": "suporte@elicast.com.br"
     }
   ],
   "autoload": {
