@@ -97,8 +97,9 @@ class VestaAPI
     public function send($cmd)
     {
         $postVars = [
-            'user'       => $this->userName,
-            'password'   => $this->key,
+            //'user'       => $this->userName,
+            //'password'   => $this->key,
+            'hash'   => $this->key,
             'returncode' => $this->returnCode,
             'cmd'        => $cmd,
         ];

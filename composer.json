@@ -1,5 +1,5 @@
 {
-  "name": "tabuna/vesta-api",
+  "name": "heliocg/vesta-api",
   "description": "VestaCP client for Laravel",
   "keywords": [
     "framework",
@@ -9,9 +9,10 @@
     "panel"
   ],
   "type": "library",
+  "minimum-stability": "dev",
   "require": {
-    "guzzlehttp/guzzle": "^6.2",
-    "laravel/framework": "^5.0"
+    "guzzlehttp/guzzle": "^6.3",
+    "laravel/framework": "^6.0"
   },
   "license": "GPL-3.0",
   "support": {
@@ -22,6 +23,10 @@
     {
       "name": "Alexandr Chernyaev",
       "email": "bliz48rus@gmail.com"
+    },
+    {
+      "name": "Hélio CG",
+      "email": "suporte@elicast.com.br"
     }
   ],
   "autoload": {
@@ -38,7 +43,5 @@
         "Dashboard": "VestaAPI\\Facades\\Vesta"
       }
     }
-  },
-  "minimum-stability": "stable",
-  "prefer-stable": true
+  }
 }
