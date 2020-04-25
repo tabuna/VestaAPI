@@ -10,8 +10,8 @@
   ],
   "type": "library",
   "require": {
-    "guzzlehttp/guzzle": "^6.2",
-    "laravel/framework": "^5.0"
+    "guzzlehttp/guzzle": "^6.5",
+    "laravel/framework": "^7.0"
   },
   "license": "GPL-3.0",
   "support": {
