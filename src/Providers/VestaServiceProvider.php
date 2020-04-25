@@ -24,7 +24,8 @@ class VestaServiceProvider extends ServiceProvider
         ]);
 
         $this->mergeConfigFrom(
-            __DIR__.'/../../config/vesta.php', 'vesta'
+            __DIR__.'/../../config/vesta.php',
+            'vesta'
         );
     }
 }

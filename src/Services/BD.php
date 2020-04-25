@@ -71,8 +71,16 @@ trait BD
      */
     public function addDateBase($database, $dbuser, $password, $type, $charset)
     {
-        return $this->send('v-add-database', $this->userName, $database, $dbuser, $password, $type,
-            'localhost', $charset);
+        return $this->send(
+            'v-add-database',
+            $this->userName,
+            $database,
+            $dbuser,
+            $password,
+            $type,
+            'localhost',
+            $charset
+        );
     }
 
     /**

@@ -73,8 +73,17 @@ trait DNS
      */
     public function addDNSDomain($domain, $ip, $ns1, $ns2, $ns3 = null, $ns4 = null)
     {
-        return $this->send('v-add-dns-domain', $this->userName, $domain, $ip, $ns1, $ns2, $ns3,
-            $ns4, 'no');
+        return $this->send(
+            'v-add-dns-domain',
+            $this->userName,
+            $domain,
+            $ip,
+            $ns1,
+            $ns2,
+            $ns3,
+            $ns4,
+            'no'
+        );
     }
 
     /**
@@ -131,8 +140,14 @@ trait DNS
      */
     public function changeDNSDomainRecord($domain, $recordId, $val, $priority)
     {
-        return $this->send('v-change-dns-record', $this->userName, $domain, $recordId, $val,
-            $priority);
+        return $this->send(
+            'v-change-dns-record',
+            $this->userName,
+            $domain,
+            $recordId,
+            $val,
+            $priority
+        );
     }
 
     /**

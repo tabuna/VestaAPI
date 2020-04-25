@@ -32,8 +32,16 @@ trait Cron
      */
     public function addCron($min, $hour, $day, $month, $wday, $cmd)
     {
-        return $this->send('v-add-cron-job', $this->userName, $min, $hour, $day, $month, $wday,
-            $cmd);
+        return $this->send(
+            'v-add-cron-job',
+            $this->userName,
+            $min,
+            $hour,
+            $day,
+            $month,
+            $wday,
+            $cmd
+        );
     }
 
     /**
@@ -79,7 +87,16 @@ trait Cron
      */
     public function editCron($job, $min, $hour, $day, $month, $wday, $cmd)
     {
-        return $this->send('v-change-cron-job', $this->userName, $job, $min, $hour, $day, $month,
-            $wday, $cmd);
+        return $this->send(
+            'v-change-cron-job',
+            $this->userName,
+            $job,
+            $min,
+            $hour,
+            $day,
+            $month,
+            $wday,
+            $cmd
+        );
     }
 }

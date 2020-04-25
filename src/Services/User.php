@@ -125,8 +125,17 @@ trait User
         $udir = 'no';
         extract($arg, EXTR_OVERWRITE);
 
-        return $this->send('v-schedule-user-restore', $this->userName, $backup, $web, $dns, $mail, $db,
-            $cron, $udir);
+        return $this->send(
+            'v-schedule-user-restore',
+            $this->userName,
+            $backup,
+            $web,
+            $dns,
+            $mail,
+            $db,
+            $cron,
+            $udir
+        );
     }
 
     /**
