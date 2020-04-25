@@ -7,7 +7,13 @@ use VestaAPI\Exceptions\VestaExceptions;
 
 class VestaAPI
 {
-    use BD, DNS, User, Web, Service, Cron, FileSystem;
+    use BD;
+    use DNS;
+    use User;
+    use Web;
+    use Service;
+    use Cron;
+    use FileSystem;
 
     /**
      * @var

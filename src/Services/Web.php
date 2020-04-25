@@ -134,8 +134,14 @@ trait Web
      */
     public function addFtpDomain($domain, $ftpUserName, $ftpPassword, $ftpPath)
     {
-        return $this->send('v-add-web-domain-ftp', $this->userName, $domain, $ftpUserName, $ftpPassword,
-            $ftpPath);
+        return $this->send(
+            'v-add-web-domain-ftp',
+            $this->userName,
+            $domain,
+            $ftpUserName,
+            $ftpPassword,
+            $ftpPath
+        );
     }
 
     /**
@@ -200,8 +206,13 @@ trait Web
      */
     public function changeWebDomain($domain, $ftpUserName, $ftpPath)
     {
-        return $this->send('v-change-web-domain-ftp-path', $this->userName, $domain, $ftpUserName,
-            $ftpPath);
+        return $this->send(
+            'v-change-web-domain-ftp-path',
+            $this->userName,
+            $domain,
+            $ftpUserName,
+            $ftpPath
+        );
     }
 
     /**
@@ -215,7 +226,12 @@ trait Web
      */
     public function changeFtpPassword($domain, $ftpUserName, $password)
     {
-        return $this->send('v-change-web-domain-ftp-password', $this->userName, $domain, $ftpUserName,
-            $password);
+        return $this->send(
+            'v-change-web-domain-ftp-password',
+            $this->userName,
+            $domain,
+            $ftpUserName,
+            $password
+        );
     }
 }
